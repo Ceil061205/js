@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 不能绑定this argumnets属性 不能作为构造函数使用 不能和new一起使用会抛出错误
+    var f = (a,b) => {
+      console.log('hhh');
+    }
+
+    var names = ['a', 'b']
+    names.forEach((item, index, arr) => {
+      console.log(item);
+    })
+
+    setTimeout(() => {
+      console.log(1);
+    }, 1);
+
+    
+  </script>
+</body>
+</html>

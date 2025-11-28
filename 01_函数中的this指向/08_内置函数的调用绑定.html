@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>按钮</button>
+  <script>
+  setTimeout(function() {
+    console.log(this);
+  },1000)
+  var btn = document.querySelector('button')
+  btn.onclick = function() {
+    console.log(this);
+  }
+  btn.addEventListener('click', function() {
+    console.log(this);
+  })
+  var names = ['a','b','c']
+  names.forEach(function(item) {
+    console.log(this); 
+  }, 'aaa')//第二个参数绑定this
+  
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function f() {
+      console.log(this);
+    }
+    var obj = {
+      f//隐式
+    }
+    obj.f.apply("abc")//显示绑定优先级更高
+    // 默认<隐式<显示<new
+
+    var bar = f.bind('a')
+    var obj = {
+      name: 'why',
+      baz: bar
+    }
+
+    obj.baz()
+
+    // 隐式<new
+    var obj = {
+      name: 'shj',
+      foo: function() {
+        console.log(this);
+      }
+    }
+    new obj.foo()
+
+    // new不能和apply call 一起使用
+    // bind<new
+    function a() {
+      console.log(this);
+    }
+    var b = a.bind('a')
+    new b()
+
+    // apply/call<bind
+  
+  </script>
+</body>
+
+</html>

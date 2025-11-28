@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var names = ['a', 'b']
+    var nums = [0, 1, 2]
+    names.forEach(item => {
+      console.log(item);
+    })
+    var newArr = nums.filter(item => {
+      return item %2 === 0//有return不能省略如果省略则带return一起省略
+    })
+    console.log(newArr);
+    nums.forEach(item => console.log(item)) 
+
+    // 返回值默认为该一行代码
+     var newArr = nums.filter(item =>  item % 2 === 0)
+
+    //  默认返回值为对象则一定要加()
+    var af = () => {  };//这里是执行体
+    var af = () => ({ name: 'xxx' });
+    console.log(af());
+
+    var arr = [1, 2, 4]
+    var result = arr.filter(item => item % 2 === 0)
+                    .map(item => item*item)
+                    .reduce((pre,item) => pre+item, 0)
+    console.log(result);
+     </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function f() {
+      console.log(this);
+    }
+    f()//指向window
+    
+    var obj = { f }
+    obj.f()//指向obj
+
+    f.call('abc')
+
+  </script>
+</body>
+</html>

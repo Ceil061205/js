@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var obj = {
+      name: 'why'
+    }
+    function f() {
+      console.log(this);
+      
+    }
+    // obj.f = f
+    // oobj.f()
+
+    foo.call(obj)//强制绑定this指向obj
+  </script>
+</body>
+</html>

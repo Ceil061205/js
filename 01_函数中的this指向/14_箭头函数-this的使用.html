@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function f(url, callbackFn) {
+      var result = ['a', 'b']
+      callbackFn(result)
+    }
+    var obj = {
+      names:[],
+      network: function(){
+        // var _this = this
+        // f('/url',function(res) {
+        //   _this.names = _this.names.concat(res)
+        // })
+        f('/url', (res) => {
+          this.names = [].names.concat(res)
+        })
+        
+      }
+    }
+    obj.network()
+    console.log(obj);
+    
+    
+
+  </script>
+</body>
+</html>

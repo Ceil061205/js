@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+  function f(name, age) {
+    console.log(this);
+    console.log(name, age);
+    
+  }
+  f.apply("ap", ['name', 11])//第一个参数绑定this 第二个传实参
+
+  f.call("kkk", 'xyz', 22)//后续参数以多参数传入
+  </script>
+</body>
+
+</html>

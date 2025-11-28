@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function f() {
+      console.log(this);
+    }
+    f()
+
+    // 箭头函数中无this
+    var bar = () => {
+      console.log(this);//从上层作用域找this -> window
+    }
+    bar()
+
+    var obj = {
+      name: 'xyz',
+      foo: function() {
+        var bar = () => {
+          console.log(this);//一层一层往上找指向obj对象
+        } 
+        return bar;
+      }
+    }
+    var fn = obj.foo()
+    fn.apply('aaa')
+
+    
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+  // 严格模式下独立函数调用this指向undefined
+
+    // use strict;
+    function f() {
+      console.log(this);
+    }
+    f()//指向window 默认绑定 普通函数被独立调用
+
+    var obj = {
+      name:"why",
+      bar() {
+        console.log(this);
+      }
+    }
+
+    var baz = obj.bar
+    baz()//依然是独立函数调用  看调用的位置
+
+    function test(fn) {
+      fn()//还是独立函数调用 
+    }
+
+    test(obj.bar)
+
+  </script>
+</body>
+
+</html>
