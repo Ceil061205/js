@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<!-- 常用defer -->
+</head>
+<body>
+  <div class="app">111</div>
+  <!-- async 属性表示脚本的加载和执行是异步进行的，独立下载,独立运行,不会等待其他脚本,不会阻塞HTML文档的解析。-->
+  <!-- 下载完立即执行 多个之间没有顺序 -->
+  <script src="./js/test.js" async></script>
+  <script src="./js/test.js" async></script>
+  <div>aaaa</div>
+</body>
+</html>

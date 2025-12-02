@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- new操作
+    1. 创建一个空对象 
+    var obj = {}
+    2. 将这个空对象赋值给this
+    this = obj
+    3.将函数的显式原型赋值给这个对象作为它的隐式原型(__proto__)
+    obj.__proto__ = Person.prototype
+    4.执行函数体代码
+    
+    5.将这个对象默认返回
+
+-->
+<body>
+  <script>
+
+    // 函数原型
+    function Person() {
+
+    }
+    // 将函数看出一个普通的对象，它具有属性，其中就包括__proto__(隐式原型)
+    // 作用:查找key对应的value值,会找到原型身上
+    console.log(Person.__proto__); // 输出: Person {}
+
+
+    // 将函数原型看作一个函数, 它有prototype(显式原型)属性,对象是没有prototype属性
+    // 作用 :用来构建对象时,给对象设置隐式原型
+    console.log(Person.prototype);
+    
+
+    // Person.prototype.sayHello = function() {
+    //   console.log("Hello, " + this.name);
+    // };
+
+    // var person1 = new Person("Alice");
+    // person1.sayHello(); // 输出: Hello, Alice
+  </script>
+</body>
+</html>

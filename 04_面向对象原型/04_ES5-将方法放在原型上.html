@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 函数原型作用
+    // 在啊通过new关键字创建的实例对象，将这个显式原型赋值给创建出来对象的隐式原型上
+
+    function Student(name, age) {
+      this.name = name;
+      this.age = age;
+      // 在里面定义方法，这样每个实例都会有自己的函数副本,每次执行都会创建一个新的函数实例，占用内存
+      // this.sayHello = function() {
+      //   console.log("Hello, my name is " + this.name);
+      // };
+    }
+    // 使用原型链的方式来定义方法，这样可以节省内存
+    Student.prototype.sayHello = function() {
+      console.log("Hello, my name is " + this.name);
+    };
+
+    const student1 = new Student("John", 20);
+    // 隐式原型的作用:
+      // 1.stu1的隐式原型指向Student的prototype对象
+      // 2.先在stu1对象上查找sayHello方法，如果没有找到，就去它的隐式原型指向的Student.prototype上去找
+    student1.sayHello(); // Output: Hello, my name is John
+
+    // 当多个对象有共同的值时,我们可以将它放在构造函数对象的显式原型上
+    // 由构造函数创建出的所有对象 都会共享这些属性
+  </script>
+</body>
+</html>

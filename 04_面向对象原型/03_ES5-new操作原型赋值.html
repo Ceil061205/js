@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Foo() {
+      // new操作
+      // 1. 创建一个空对象
+      // 
+      // 2. 将这个空对象赋值给this
+      // 
+      // 3.将函数的显式原型赋值给这个对象作为它的隐式原型(__proto__)
+      // Foo.prototype = this.__proto__
+      // 4.执行函数体代码
+
+      // 5.将这个对象默认返回
+    }
+    console.log(Foo.prototype);
+    var foo = new Foo();
+    var bar = new Foo();
+    console.log(foo.__proto__ === Foo.prototype);
+    console.log(bar.__proto__ === foo.__proto__);
+  </script>
+</body>
+</html>
