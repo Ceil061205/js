@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var obj = {
+      name: "John",
+      age: 30,
+      
+    };
+    // 获取属性的描述符
+    console.log(Object.getOwnPropertyDescriptor(obj, "name"));
+    console.log(Object.getOwnPropertyDescriptors(obj));
+
+    // 阻止扩展对象
+    Object.preventExtensions(obj);
+    // 尝试添加新属性会失败
+    obj.gender = "male"; // 这行代码不会执行，因为对象已被阻止扩展。
+    console.log(obj);
+    
+    // 冻结对象（不可写、不可配置、不可扩展）
+    var obj2 = Object.freeze({name: "John", age: 30});
+    obj2.age = 40; // 这行代码无效，因为属性是不可写的。
+    delete obj2.name; // 这行代码无效，因为属性是不可删除的。
+    console.log(obj2);
+    
+    // 密封对象（不可扩展，但现有属性仍可配置和写入）
+    var obj3 = Object.seal({name: "John", age: 30});
+    obj3.age = 40; // 这行代码有效，因为属性是可写的。
+    delete obj3.name; // 这行代码无效，因为对象已被密封且属性不可删除。
+    console.log(obj3);
+
+    // 判断对象是否可扩展
+    console.log(Object.isExtensible(obj)); // false，因为 obj 已被阻止扩展。
+    console.log(Object.isSealed(obj3)); // true，因为 obj3 是密封的。
+  
+  </script>
+</body>
+</html>

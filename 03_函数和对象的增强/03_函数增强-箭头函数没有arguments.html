@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 箭头函数中不绑定arguments
+
+
+    // var bar = () => {
+    //   console.log(arguments);
+      
+    // }
+    // bar(1,2,3);
+
+    function foo() {
+      // 箭头函数中会从上层作用域中继承arguments对象
+      var bar = () => {
+        console.log(arguments);
+      }
+      bar();
+    }
+    foo(1,2,3)
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var obj = {
+      name: "John",
+    };
+    var _name = "";
+    Object.defineProperty(obj, "name", {
+      enumerable: false,
+      configurable: true,
+      set: function (value) {
+        console.log('set',value);
+       _name = value;
+      },
+      get: function () {
+        console.log('get',_name);
+        return _name;
+      }
+    });
+    obj.name = "Jan1e";
+    console.log(obj.name);
+  </script>
+</body>
+</html>
