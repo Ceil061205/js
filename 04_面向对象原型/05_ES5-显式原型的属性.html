@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // constructor指向person函数对象
+    function Person() {
+    }
+    console.log(Person.prototype);
+    console.log(Person.prototype.constructor);
+    console.log(Person.prototype.constructor === Person);
+    console.log(Person.name, '--' ,Person.prototype.constructor.name);
+
+    // 实例化对象
+    var person = new Person();
+    console.log(person.__proto__.constructor);
+    console.log(person.constructor.name);
+  </script>
+</body>
+</html>
