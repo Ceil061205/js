@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+      
+    }
+    Person.prototype.sayHello = function() {
+      console.log('Hello, my name is ' + this.name + ' and I am ' + this.age + ' years old.');
+    }
+    var p1 = new Person('John', 25);
+    console.log(p1.name);
+    p1.sayHello();
+
+    Person.prototype.address = '123 Main St';
+    p1.__proto__.info = '456 Elm St';
+
+    p1.height = 170;
+
+    console.log(p1.address);
+    console.log(p1.info);
+    console.log(p1.height);
+
+    p1.address = '789 Oak St';
+    console.log(p1.address);// 789 Oak St  先在自身实例上查找，找到了就不再往上找
+
+    var p2 = new Person('Jane', 30);
+    console.log(p2.address);// 123 Main St
+
+    
+  </script>
+</body>
+</html>

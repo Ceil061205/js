@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/inherit_util.js"></script>
+</head>
+<body>
+  <script>
+    var obj = {
+      name: 'obj',
+    }
+    Object.prototype.age = 18;
+    console.log(obj.hasOwnProperty('age'));//false
+    console.log(obj.hasOwnProperty('name'));//true
+
+    console.log('age' in obj);//true
+
+    // for in 循环会把原型链上的属性也遍历出来,enumerable 为 true 的属性才会被遍历出来
+    for(var key in obj){
+      console.log(key);
+    }
+    // 如果要遍历对象自身的属性，可以使用 Object.keys() 方法
+    console.log(Object.keys(obj));//['name']
+    
+    // instanceof如果要判断一个对象是否为某个构造函数的实例，可以使用 instanceof 运算符  
+    // 实li对象和类
+    console.log(obj instanceof Object);//true
+    // 如果要判断一个对象是否为另一个对象的原型，可以使用 isPrototypeOf 方法
+    // 对象与对象,对象之间的基础
+    console.log(Object.prototype.isPrototypeOf(obj));
+    
+  </script>
+  <script>
+    
+
+
+    
+    
+  </script>
+</body>
+</html>

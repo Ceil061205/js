@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Person() {
+
+    }
+
+    function Student() {
+    
+    }
+  //  function F() {}
+  //  F.prototype = Person.prototype;
+  //  Student.prototype = new F();
+
+  // 最终方案
+  // var obj = Object.create(Person.prototype);
+  // console.log(obj.__proto__ === Person.prototype);
+  // Student.prototype = obj;
+
+  // 寄生组合式继承
+  function inherit(Subtype, Supertype) {
+    Supertype.prototype = Object.create(Supertype.prototype);
+    Object.defineProperty(Subtype.prototype, 'constructor', {
+      enumerable: false,
+      writable: true,
+      configurable: true,
+      value: Subtype
+    });
+  }
+  inherit(Student, Person);  
+  </script>
+</body>
+</html>

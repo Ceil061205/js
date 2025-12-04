@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var obj = {}
+    // 本质相当于
+    // var obj = new Object()
+    // console.log(obj.__proto__ === Object.prototype); // true
+
+    
+    var obj = {
+      name: "John",
+      age: 30,
+
+    }
+    console.log(obj.msg); // undefined
+    // 查找顺序：obj -> obj.__proto__ -> obj.__proto__ .__proto__ -> null
+
+    obj.__proto__ = {
+      // msg: "Hello, world!"
+    }
+    obj.__proto__.__proto__ = {
+      // msg: "Hello, world!"
+    }
+    obj.__proto__.__proto__.__proto__ = {
+      msg: "Hello, world!"
+    }
+    console.log(obj.msg); // Hello, world!
+
+    
+  </script>
+</body>
+</html>

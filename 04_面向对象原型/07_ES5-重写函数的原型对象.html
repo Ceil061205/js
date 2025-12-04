@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Person() {
+    }
+    console.log(Person.prototype);
+    Person.prototype.name = 'Kevin';
+    Person.prototype.age = 18;
+    Person.prototype.sayName = function() {
+      console.log(this.name);
+    };
+   
+    // 一下给原型里面加很多属性,但是这样没有了constructor属性了
+    Person.prototype = {
+      message: 'Hello',
+      info: function() {
+        console.log(this.message);
+      },
+      // constructor: Person// 重新指向构造函数Person,不然会丢失constructor属性,此时constructor可枚举
+    }
+    Object.defineProperty(Person.prototype, 'constructor', {
+      value: Person//此时constructor属性是不可枚举的
+    });
+    var person = new Person();
+    console.log(person.message);
+    console.log(Object.keys(Person.prototype));
+    
+  </script>
+</body>
+</html>
