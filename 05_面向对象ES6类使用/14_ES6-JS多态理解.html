@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 多态的表现:为不同数据类型的实体提供了统一的接口，或使用一个单一的接口来操作不同的数据类型。
+    // 多态的表现 js到处都是多态的表现
+    function sum(a, b) {
+      return a + b;
+    }
+    console.log(sum(1, 2)); // Output: 3
+    sum('abc', 'def'); 
+    // 同一个标识符来表示不同的数据类型
+    var a = 10;
+    a = 'abc';
+  </script>
+</body>
+</html>

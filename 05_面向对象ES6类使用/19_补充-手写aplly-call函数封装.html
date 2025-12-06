@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 封装到独立的函数
+    function exec(thisArg, oterArgs, fn) {
+        thisArg = (thisArg === null || thisArg === undefined) ? window : Object(thisArg)
+        Object.defineProperty(thisArg, 'fn', {
+          value: this,
+          configurable: true,
+          enumerable: false,
+        });
+        thisArg.fn(...otherArgs);
+        delete thisArg.fn;
+    }
+    Function.prototype.hycall = function (thisArg, ...otherArgs) {
+      exec(thisArg, otherArgs, this);
+    }
+    
+    // 封装到原型上
+    Function.prototype.exExec = function (thisArg, otherArgs) {
+      thisArg = (thisArg === null || thisArg === undefined) ? window : Object(thisArg)
+      Object.defineProperty(thisArg, 'fn', {
+        value: this,
+        configurable: true,
+        enumerable: false,
+      });
+      thisArg.fn(...otherArgs);
+      delete thisArg.fn;
+    }
+    Function.prototype.hycall = function (thisArg, ...otherArgs) {
+      this.execFn(thisArg, otherArgs);
+    }
+  </script>
+</body>
+</html>

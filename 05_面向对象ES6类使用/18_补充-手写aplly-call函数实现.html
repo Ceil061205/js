@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo(name, age) {
+      console.log(this, name, age);
+    }
+    // foo.apply('a', ['张三', 20]);
+    // foo.call('b', '李四', 30);
+
+    // 1.给函数对象添加方法
+    Function.prototype.hyapply = function (thisArg, otherArgs) {
+      // this指向当前调用的函数对象
+      // thisArg是要绑定的this
+      // console.log(this);// 指向当前调用的函数对象
+      // this()//默认调用绑定了window对象的方法，所以这里会打印window
+
+      // 隐式绑定 把当前函数对象赋值给thArg对象的fn属性
+      // thisArg.fn = this;
+      // thisArg.fn();
+      // delete thisArg.fn;
+      
+      // 判断thisArg是不是null或者undefined，如果是的话就绑定到window上
+      thisArg = (thisArg ===null || thisArg === undefined)? window : Object(thisArg)
+
+      Object.defineProperty(thisArg, 'fn', {
+        value: this,
+        configurable: true,
+        enumerable: false,
+
+      });
+      thisArg.fn(...otherArgs);
+      delete thisArg.fn;
+    }
+    foo.hyapply({ name: 'why' },['张三', 20]);
+    foo.hyapply(null, ['张三2', 20]);
+    foo.hyapply(1, ['张1', 20]);
+    // 2. 给函数对象添加hycall方法
+    Function.prototype.hycall = function (thisArg, ...otherArgs) {
+      thisArg = (thisArg ===null || thisArg === undefined)? window : Object(thisArg)
+
+      Object.defineProperty(thisArg, 'fn', {
+        value: this,
+        configurable: true,
+        enumerable: false,
+
+      });
+      thisArg.fn(...otherArgs);
+      delete thisArg.fn;
+    }
+    foo.hycall({ name: 'why' },'张三2', 20);
+    foo.hycall(null,'张3', 20);
+  </script>
+</body>
+</html>

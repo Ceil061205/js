@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.属性的增强
+    var name = '张三';
+    var obj = {
+      name,// 等同于 name:name, 属性名和变量名相同，可以省略冒号和值
+      age: 18,
+    }
+    // 2.方法的简写
+    var obj2 = {
+      sayHello() { // 等同于 sayHello: function(){}
+        console.log('hello')
+      },
+      eating: () =>{
+        console.log('this');// 箭头函数中没有this，指向外部的上下文环境
+      }
+    }
+    
+    // 3.计算属性增强
+    var key = 'name' ;
+    var obj3 = {
+      [key]: '张三' // 等同于 obj3['name'] = '张三'
+    }
+  </script>
+</body>
+</html>

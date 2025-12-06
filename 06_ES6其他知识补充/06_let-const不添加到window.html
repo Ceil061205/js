@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var定义的变量会成为全局对象window的属性，而let const定义的不会
+    var msg = "Hello, world!";
+    console.log(window.msg); // 输出: Hello, world!
+
+    let msg2 = "Hello, world!";
+    console.log(window.msg2); // 输出: undefined
+
+  </script>
+</body>
+</html>
