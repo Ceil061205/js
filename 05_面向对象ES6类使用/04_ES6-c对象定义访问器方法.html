@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 监听_name什么时候v额u访问修改
+    var person = {
+      _name: 'John',
+      set name(value) {
+        this._name = value;
+      },
+      get name() {
+        return this._name;
+      }
+    }
+
+
+  </script>
+</body>
+</html>
