@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 返回值的区别,返回的是一个promise对象,和promise对象一样
+    async function foo(params) {
+      console.log('sjsjsj');
+      return 'hahah'
+    }
+    foo().then(res => {
+      console.log(res);
+    })
+  </script>
+</body>
+</html>

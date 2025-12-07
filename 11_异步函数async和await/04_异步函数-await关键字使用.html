@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function bar() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('hahhhah')
+        }, 1000)
+      })
+    }
+    // await必须在异步函数内使用
+    async function foo(params) {
+      console.log('sjsjsj');
+      // await后续会返回一个promise对象，等待promise有结果之后，才会继续向下执行
+      const res = await bar()
+      console.log(1111);
+    }
+    foo()
+  </script>
+</body>
+</html>

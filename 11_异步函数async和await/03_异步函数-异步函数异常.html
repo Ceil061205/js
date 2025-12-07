@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 异常会进行Promise.reject()
+    async function foo(params) {
+      console.log('sjsjsj');
+      // 'abc'.filter()//会报错,因为filter不是一个函数,所以会返回一个promise对象,而且是rejected状态
+      throw new Error('hahah')//自动抛出异常
+      return 'hahah'
+    }
+    foo().then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+  </script>
+</body>
+</html>
