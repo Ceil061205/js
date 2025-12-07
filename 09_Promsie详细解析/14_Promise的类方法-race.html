@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // all:所有
+    const p1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('p1')
+      }, 1000)
+    })
+    const p2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('p2')
+      }, 2000)
+    })
+    const p3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('p3')
+      }, 3000)
+    })
+  // any:任何一个成功就返回结果，如果都失败则报错
+  Promise.any([p1, p2, p3]).then(res => console.log(res)) // 同时执行多个promise，只要有一个成功就返回结果
+    .catch(err => console.log('all error', err))
+  </script>
+    
+</body>
+</html>

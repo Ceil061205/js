@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const promise = new Promise((resolve, reject) => {
+      resolve('Resolved!');
+    });
+    // 链式调用,then方法本身就是返回一个promise对象，可以继续链式调用then和catch方法。
+    // then方法返回新的promise,链式中的每一个then方法都会等待上一个then方法的promise对象执行完成之后才会执行。
+    promise.then(res =>{
+      console.log('1', res);
+      return 'bbb';
+      // return Promise.resolve('bbb'); // 这样也行，返回一个promise对象也可以。
+    }).then(res => {
+        console.log('2', res);// 这里的res是上一个then方法的返回值，也就是'bbb',上一个如果没有返回值，则为undefined。
+        return 'ccc';
+      }
+    ).then(res => {
+        console.log('3', res);
+      }
+    ).catch();
+  </script>
+</body>
+</html>
