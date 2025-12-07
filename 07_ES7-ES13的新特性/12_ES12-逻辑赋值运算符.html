@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo(msg) {
+      // msg = msg || "Hello";
+      // 等价于
+      // msg ||= "Hello";
+
+      msg ??= "Hello";
+
+      console.log(msg);
+    }
+    const obj = {
+      name: "小明",
+      age: 18,
+    };
+
+    foo(); // Hello
+    foo("Hi"); // Hi
+    console.log(obj?.name); // 小明
+    console.log(obj?.age); // 18
+    console.log(obj?.gender); // undefined
+    console.log(obj?.[0]); // undefined
+    console.log(obj?.toString()); // [object Object]
+    console.log(null ?? "Hello"); // Hello
+    
+  </script>
+</body>
+</html>

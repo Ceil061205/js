@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const p = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    })
+
+    const promise = new Promise((resolve, reject) => {
+      // 1.resolve可以传入普通值
+      // resolve([ 'hello', 'world' ])
+      // 2.resolve可以传入一个promise对象
+      // 如果值是promise对象，则当前promise的状态由传入的那个promise对象决定
+      resolve(p)
+    });
+
+    promise.then((message) => {
+      console.log(message);
+    })
+  </script>
+</body>
+</html>
