@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function定义的对象有两个原型
+    function foo() {}
+    console.log(foo.prototype);//new foo() --> f.__proto__ === foo.prototype
+    console.log(foo.__proto__);// 指向Function.prototype
+
+    // 箭头函数没有显式原型,不绑定this,不绑定arguments,不绑定super,不能使用new调用
+    // 在es6之后定义类亚勇class
+    var bar = () => {};
+    console.log(bar.__proto__ === Function.prototype);
+    console.log(bar.prototype);//undefined      所以不能new bar()
+  </script>
+</body>
+</html>

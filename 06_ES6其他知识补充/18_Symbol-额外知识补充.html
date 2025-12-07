@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const s1 = Symbol();
+    const s2 = Symbol();
+
+    // 加入到对象中
+    const obj = {
+      [s1]: 'hello',
+      [s2]: 'world'
+    }
+
+    // const obj1 = {}
+    // obj1[s1] = 'hello'
+    // obj1[s2] = 'world'
+
+    // const obj2 = {}
+    // Object.defineProperty(obj2, s1, {
+    //   value: 'hello'
+    // })
+    // Object.defineProperty(obj2, s2, {
+    //   value: 'world'
+    // })
+    console.log(Object.keys(obj)); //获取不到symbol类型的key
+    console.log(Object.getOwnPropertySymbols(obj)); //获取symbol类型的key
+    const symbolKeys = Object.getOwnPropertySymbols(obj);
+    for (const symbolKey of symbolKeys) {
+      console.log(obj[symbolKey]);
+    }
+
+    // description
+    // symbol生成的值都是独一无二的
+    const s3 = Symbol('foo');
+    console.log(s3.description);// foo
+    const s4 = Symbol(s3.description);
+    console.log(s3 === s4); // false
+
+    // 相同的key,通过description生成的symbol是同一个值
+    const s5 = Symbol.for('ddd');
+    const s6 = Symbol.for('ddd');
+    console.log(s5 === s6); // true
+
+    console.log(Symbol.keyFor(s5));// ddd
+  </script>
+</body>
+</html>

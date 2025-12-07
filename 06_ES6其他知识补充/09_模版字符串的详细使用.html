@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const name = "John Doe";
+    const age = 30;
+    // 基本用法
+    // 1.1.ES6之前
+    // const info = "Hello, my name is " + name + " and I am " + age + " years old.";
+    // 1.2.ES6之后
+    const info = `Hello, my name is ${name} and I am ${age} years old.`;
+    // console.log(info);
+
+    // 2.标签模版字符串的用法
+    function foo(...args) {
+     console.log("参数",args);
+    }
+    foo`Hello, my name is ${name} and I am ${age} years old.`;
+  </script>
+</body>
+</html>
