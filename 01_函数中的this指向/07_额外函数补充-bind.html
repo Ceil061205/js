@@ -6,7 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-
+<!-- 
+    一、先明确核心差异（表格对比）
+    方法	执行时机	  参数传递方式	          返回值	                重复调用的 this稳定性
+    bind	不立即执行	逐个传参（预绑定参数）	新函数（永久绑定 this）	  稳定（每次调用都绑定）
+    call	立即执行	  逐个传参	             函数执行结果	            仅本次生效
+    apply	立即执行	  数组 / 类数组传参       函数执行结果	          仅本次生效
+-->
 <body>
   <script>
   var obj = { name: 'xyz'} 
@@ -14,7 +20,7 @@
     console.log(this);
   }
 
-  // 不希望obj上有函数
+  // 调用函数时候,总是绑定到obj上,不希望obj上有函数
   var bar = f.bind(obj)
   bar()//this -> obj
 
