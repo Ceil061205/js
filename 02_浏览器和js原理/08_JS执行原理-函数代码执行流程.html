@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 函数可以被提前访问,做了特殊处理
+    var msg = "Hello, world!";
+
+    // 函数执行上下文,函数执行时候会创建一个AO对象,AO对象中包含了函数的所有局部变量和参数
+
+    function sayHello(name) {
+      console.log(msg, name);
+    }
+    sayHello('xyz');
+
+    console.log(msg);
+    
+  </script>
+</body>
+</html>

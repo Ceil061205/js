@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<!-- 生成新的合成层:浏览器渲染优化手段    /* 以内存为代价,不能过度使用 */
+
+
+  1. 3D 或透视变换 CSS属性，如perspective-origin, perspective, transform
+  2. 使用下面CSS属性的元素会创建一个新的层叠上下文
+    will-change: transform, opacity
+  3. 拥有opacity小于1的元素
+  4. 使用下面CSS属性的元素会创建一个新的层叠上下文
+    filter, backdrop-filter
+-->
+
+<style>
+  .container {
+    /* 生成新图层 */
+    /* position: fixed; */
+    /* 3d */
+    /* transform: translateZ(0); */
+    /* transition: transform 1s ease;
+    opacity: 0.9; */
+
+
+    will-change: tansform;
+  }
+  .container:hover {
+    /* 在新图层做动画性能跟高,不会引起回流 */
+    /* transform: translateX(100px); */
+
+    /* 动画转化 */
+    opacity: 0.2;
+  }
+</style>
+
+<body>
+  <div class="box">哈哈哈哈</div>
+  <div class="container">7777</div>
+
+  <script src="./js/t.js"></script>
+  <script>
+
+  </script>
+</body>
+</html>

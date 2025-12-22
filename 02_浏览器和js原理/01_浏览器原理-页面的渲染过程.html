@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<!-- 
+  dom和cssom合成 -- layout(布局) -- render tree -- paint(绘制) -- display 
+-->
+  <!-- 1.回流: dom结构改变,改变布局,窗口尺寸,getComputedstyle获取尺寸位置 一定会引起重绘,非常消耗性能 -->
+  <!-- 2.重绘: 修改颜色,样式 -->
+  <!-- 尽量一次性修改样式,避免经常操作dom,避免调用get...,元素使用absolute和fixed -->
+
+<body>
+  <div class="box">哈哈哈哈</div>
+  <button>删除</button>
+  <script src="./js/t.js"></script>
+  <script>
+    var box = document.querySelector('.box')
+    var btn = document.querySelector('button')
+    btn.onclick = function () {
+      box.remove()
+    }
+  </script>
+</body>
+</html>
