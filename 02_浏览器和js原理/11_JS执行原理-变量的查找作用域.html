@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var msg = "Hello, world!";
+
+    function foo() {
+      var msg = "Hello, foo!";
+      function bar() {
+        var msg = "Hello, bar!";
+        console.log(msg);//一层一层往外形成作用域链
+      }
+      return bar;
+    }
+
+    var bar = foo();
+    bar();
+    
+  </script>
+</body>
+</html>

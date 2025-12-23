@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log(msg);//undefined作用域的提升效果
+    var msg = "Hello, world!";
+    function test() {
+      console.log(msg); //undefined 在自己的作用域查找
+      var msg = "Hello, JavaScript!";
+    }
+    test();
+
+    // 每一个执行上下文都会关联一个作用域链
+    function test2() {
+      console.log(msg);//在定义的时候已经确定了作用域链
+    }
+    test2();
+
+    var obj = {
+      msg: "Hello, object!",
+      test3: function() {
+       test2()
+      }
+    };
+    obj.test3();
+  </script>
+</body>
+</html>
