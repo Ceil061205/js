@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo(a, b, c) {
+      console.log(a + b + c);
+    }
+    // foo(1, 2, 3);
+    // 自动柯里化函数
+    function hyCurry(fn) {
+      function curryFn(...args) {
+        if (args.length < fn.length) {
+          return function (...restArgs) {
+            // return curryFn(...args, ...restArgs);
+            return curryFn.apply(this, args.concat(restArgs));//有this
+          }
+        } else {
+          // return fn(...args);
+          return fn.apply(this, args);
+        }
+      }
+      return curryFn;
+    }
+    var fooCurry = hyCurry(foo);
+    fooCurry(1)(2)(3);
+    fooCurry(1, 2, 3);
+  </script>
+</body>
+</html>

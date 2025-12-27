@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var msg = "Hello, world!";
+    var codeString =`const a = 10;console.log(a);console.log(msg); 'abc';`//也可以访问全局变量 最后一个会当成返回值
+    const result = eval(codeString);
+    console.log(result);//abc
+  </script>
+</body>
+</html>
