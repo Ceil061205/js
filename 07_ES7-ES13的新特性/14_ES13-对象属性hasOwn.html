@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const obj = {
+      name: 'John',
+      age: 30,
+      // 1. 区别一:hasOwn防止hasOwnProperty被覆盖的问题
+      // hasOwnProperty: function (prop) {
+      //   return this._proto_.hasOwnProperty(prop);
+      // },
+      _proto_: {
+        address: '123 Main St',
+      }
+    };
+    console.log(obj.hasOwnProperty('name')); // true
+    console.log(Object.hasOwn('address')); // false
+
+    // 2. 区别二:Object.hasOwn()可以
+    const info = Object.create(null); // 创建一个没有原型链(null)的对象,即指向null的对象
+    info.name = 'John';
+    console.log(Object.hasOwn(info, 'name')); // true
+    // console.log(info.hasOwnProperty('name')); // TypeError: info.hasOwnProperty is not a function
+
+
+
+
+
+
+  </script>
+</body>
+</html>
