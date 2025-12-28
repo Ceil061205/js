@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.flat的使用:将一个数组,按照指定的深度递归遍历数组,将所有元素与遍历到的子数组中的所有项合并为一个新数组返回
+    let arr = [1, 2, [3, 4], [[5, 6]]];
+    console.log(arr.flat(1)); // [1, 2, 3, 4, Array[2]]
+    console.log(arr.flat(2)); // [1, 2, 3, 4, 5, 6]
+
+    // 2.flatMap的使用:相当于先执行一个map方法,然后再对返回的数组执行flat(1)
+    const msg = [
+      'hello 1',
+      'ssjjs dd',
+      'world sd',
+    ];
+    // 2.1for循环
+    const newInfos = [];
+    for (const item of msg) {
+      const infos = item.split(' ');
+      for (const info of infos) {
+        newInfos.push(info);
+      }
+    }
+    console.log(newInfos); // ['hello', '1', 'ssjjs', 'dd', 'world', 'sd']
+
+    // 2.2 先map再flat
+    const newInfos2 = msg.map(item => item.split(' ')).flat();
+    console.log(newInfos2); // ['hello', '1', 'ssjjs', 'dd', 'world', 'sd']
+
+    // 2.3 flatMap
+    const newInfos3 = msg.flatMap(item => item.split(' '));
+    console.log(newInfos3); // ['hello', '1', 'ssjjs', 'dd', 'world', 'sd']
+  </script>
+</body>
+</html>

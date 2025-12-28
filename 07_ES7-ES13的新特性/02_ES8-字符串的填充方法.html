@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2 class="card"></h2>
+  <script>
+    // 1.应用场景一:时间格式化
+    const minutes = '1'.padStart(2, '0');
+    const seconds = '3'.padStart(2, '0');
+    console.log(`${minutes}:${seconds}`); // Output: "01:03"
+
+    // 2.应用场景二:敏感数据格式化
+    let cardNumber = '123456789011121314';
+    const sliceNum = cardNumber.slice(-4); // 取最后四位
+    cardNumber = sliceNum.padStart(cardNumber.length, '*'); // 用*填充前面的数字
+    const cardEl = document.querySelector('.card');
+    cardEl.textContent = cardNumber; 
+  </script>
+</body>
+</html>
