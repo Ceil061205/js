@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 生成器:更加灵活控制代码什么时候执行,可以暂停执行，之后再继续执行.本质上是一种特殊的迭代器
+
+    // 生成器函数: 
+    // 1.声明方式 function * 
+    // 2.生成器函数内部可以使用yield关键字暂停执行，并返回一个对象。
+    // 3.要想执行函数内部的代码,需要生成器对象,调用他的next()方法
+    //   遇到yield关键字暂停执行
+
+    // 定义了一个生成器函数
+    function * generator() {
+      console.log(1);
+      console.log(6789);
+      yield 
+      console.log(2);
+      yield
+      console.log(3);
+    }
+    // 调用生成器函数,返回一个生成器对象
+    const gen = generator(); // 生成器函数返回的是一个迭代器对象，可以使用next()方法来遍历它。
+    gen.next(); 
+    gen.next();
+    gen.next();
+
+  </script>
+</body>
+</html>

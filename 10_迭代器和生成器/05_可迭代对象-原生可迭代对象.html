@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.数组
+    const names = ['John', 'Jane', 'Doe'];
+    for (const name of names) {
+      console.log(name);
+    }
+    console.log(names[Symbol.iterator]());
+
+    // 2.字符串
+    const str = 'Hello';
+    for (const char of str) {
+      console.log(char);
+    }
+    console.log(str[Symbol.iterator]());
+
+    // 3.Map和Set
+    const map = new Map([['a', 1], ['b', 2]]);
+    for (const [key, value] of map) {
+      console.log(`${key}: ${value}`);
+    }
+    console.log(map[Symbol.iterator]());
+
+    const set = new Set(['apple', 'banana']);
+    for (const item of set) {
+      console.log(item);
+    }
+    console.log(set[Symbol.iterator]());
+
+    // 4.arguments
+    function func() {
+      for (const arg of arguments) {
+        console.log(arg);
+      }
+    }
+    func('a', 'b', 'c');
+    
+  </script>
+</body>
+</html>

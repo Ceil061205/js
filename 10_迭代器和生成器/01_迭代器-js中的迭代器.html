@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const names = ['John', 'Jane', 'Doe'];
+    // 给数组names创建一个迭代器
+    let index = 0;
+    const namesIterator = {
+      next: function() {
+        // done属性表示迭代器是否完成，value属性是具体值或者undefined
+        if (index < names.length) {
+          return {done: false, value: names[index++]};
+        } else {
+          return {done: true};
+        }
+      }
+    }
+    const value1 = namesIterator.next(); // {done: false, value: 'John'}
+    const value2 = namesIterator.next(); // {done: false, value: 'Jane'}
+    const value3 = namesIterator.next(); // {done: false, value: 'Doe'}
+    const value4 = namesIterator.next(); // {done: true, value: undefined}
+
+  </script>
+</body>
+</html>

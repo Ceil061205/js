@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person {
+      constructor(name, friends) {
+        this.name = name;
+        this.friends = friends;
+      }
+      // 实例方法
+      [Symbol.iterator]() {
+        let index = 0;
+        const iterator = {
+          next: () => {
+            if (index < this.friends.length) {
+              return { value: this.friends[index++], done: false };
+            } else {
+              return { done: true };
+            }
+          },
+          return: () => {
+            console.log('中断迭代器');
+            return { done: true };
+          }
+        };
+        return iterator;
+      }
+    }
+    const p1 = new Person('John Doe', ['Alice', 'Bob', 'Charlie']);
+
+    for (const item of p1) {
+      console.log(item);
+      // break return throw
+      if (item === 'Bob') break; // 提前退出循环
+    }
+  </script>
+</body>
+</html>

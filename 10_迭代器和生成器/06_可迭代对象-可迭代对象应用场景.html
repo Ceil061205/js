@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 可迭代对象运用场景
+    // js中语法:for...of循环，扩展运算符（...），解构赋值,yield*等
+    const names = ['张三', '李四', '王五']
+    const info = {
+      name: '张三',
+      age: 20,
+      sex: '男',
+      [Symbol.iterator]: function () {
+        let index = 0
+        return {
+          next: () => {
+            if (index < Object.values(this).length) {
+              const result = { value: this[Object.values(this)[index]], done: false }
+              index++
+              return result
+            } else {
+              return { value: undefined, done: true }
+            }
+          }
+        }
+      },
+    };
+    function foo(...args) {
+      console.log(args)
+    }
+    foo(...names)
+
+    // 2. 一些类的方法中,也是传入可迭代对象Map,Set和WeakSet,weakmap结构，
+    const set = new Set([1, 2, 3])
+    const set2 = new Set('aaa')
+
+    // 3.一些常用方法 Array.from()，Promise.all(),Promise.race(),
+    const p1 = Promise.resolve(1)
+    const p2 = Promise.resolve(2)
+    const pSet = new Set();
+    pSet.add(p1)
+    pSet.add(p2)
+    // Promise.all()里面传递是可迭代对象不一定是数组
+    Promise.all(pSet).then(res => console.log(res))
+
+    function bar() {
+      // console.log(arguments)
+      const args = Array.from(arguments)
+      console.log(args)
+    }
+    bar(111, 222)
+
+
+  </script>
+</body>
+</html>

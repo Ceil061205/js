@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 将infos变成可迭代对象
+    // 1.必须实现一个特定的函数
+    // 2.该函数必须返回一个迭代器(这个迭代器用于迭代当前的对象)
+    const infos = {
+      friends: [ "John", "Jane" ],
+      [Symbol.iterator]() {
+        let index = 0;
+        const InfosIterator = {
+          next: function () {
+            if (index < infos.friends.length) {
+              return { done: false, value: infos.friends[index++] };
+            } else {
+              return { done: true };
+            }
+          },
+        };
+        return InfosIterator;
+      },
+    };
+
+    // 为infos创建一个迭代器
+
+    // console.log(InfosIterator.next()); // 应该输出 { done: false, value: "John" }
+    // console.log(InfosIterator.next()); // 应该输出 { done: false, value: "Jane" }
+    // console.log(InfosIterator.next()); // 应该输出 { done: true }
+
+    // 可迭代对象必然具备下面的特点
+    // const iterator = infos[Symbol.iterator]();
+    // console.log(iterator.next()); 
+
+    // 可迭代对象可以使用for...of循环进行迭代
+    for (const friend of infos) {
+      console.log(friend); // 应该依次输出 "John" 和 "Jane"
+    }
+
+    // 可迭代对象必然有一个[Symbol.iterator]函数
+    const students = ["John", "Jane", "Doe"];
+    const studentsIterator = students[Symbol.iterator]();
+    console.log(studentsIterator.next()); // 应该输出 { done: false, value: "John" }
+    console.log(studentsIterator.next()); // 应该输出 { done: false, value: "Jane" }
+    console.log(studentsIterator.next()); // 应该输出 { done: false, value: "Doe" }
+    console.log(studentsIterator.next()); // 应该输出 { done: true }
+    
+
+  </script>
+</body>
+</html>

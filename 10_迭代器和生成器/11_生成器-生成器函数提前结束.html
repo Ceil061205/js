@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function * generator(name1) {
+      console.log(name1); // 1111111
+      console.log(1);
+      console.log(6789);
+      const name2 = yield 'aaa';//yeild后面是value
+      console.log(name2); //222222
+      console.log(2);
+      const name3 = yield 'bbb';
+      console.log(3);
+      yield 'ccc';
+      console.log('last');
+      return undefined;
+    }
+
+    // 1.return()方法提前结束
+    // const gen = generator('1111111');//第一次传
+    // console.log(gen.next());
+    // console.log(gen.return('222222')); //主动提前中断,后面输出都是{value: undefined, done: true}
+    // console.log('----------------');
+    // console.log(gen.next('333333'));
+    // console.log(gen.next('444444'));
+
+    // 2.throw()方法提前结束
+    const gen = generator('1111111');//第一次传
+    console.log(gen.next());
+    console.log(gen.throw(new Error('222222')));
+    console.log('----------------');
+    console.log(gen.next('333333'));
+    console.log(gen.next('444444'));
+
+
+  </script>
+</body>
+</html>
