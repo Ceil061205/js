@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="./static/about.html"  target="_blank">about</a>
+  <script>
+    // local会一直存在，除非手动删除
+    // session只在当前会话期间存在，关闭浏览器窗口后消失
+
+    // localStorage.setItem('name', 'John Doe');
+    sessionStorage.setItem('age', '30');
+
+    // 在页面内跳转时,session可以被保存,页面外不行(打开一个新网页而不是覆盖上一个页面时不行)
+  </script>
+</body>
+</html>
