@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let name = 'why';
+    name = 'xx'
+    function foo() {
+      console.log('name');
+
+      // 计时操作是由浏览器引擎完成的，并不是由JavaScript引擎完成的。
+      setTimeout(() =>{
+        console.log('1');
+      }, 1000)
+    }
+    foo();
+  </script>
+</body>
+</html>

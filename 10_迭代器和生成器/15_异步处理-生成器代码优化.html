@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 封装请求方法: url -> promise(result)
+    function requestData(url) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(url);
+        }, 1000); // 延迟时间可以根据需要调整
+      });
+    }
+
+    function* getData3() {
+      const result1 = yield requestData('why');
+      // console.log(result1);
+      const result2 = yield requestData(result1 + 'why2');
+      // console.log(result2);
+      const result3 = yield requestData(result2 + 'why3');
+      // console.log(result3);
+    }
+
+    // const gen = getData3();
+    // gen.next().value.then(result1 => {
+    //   gen.next(result1).value.then(result2 => {
+    //     gen.next(result2).value.then(result3 => {
+    //       gen.next(result3);
+    //     });
+    //   });
+    // });
+
+    // 自动化执行生成器函数
+    function autoRunGenerator(genFn) {
+      // 1.获取生成器
+      const gen = genFn();
+      // 2.递归
+      function next(data) {
+        const result = gen.next(data);
+        if (result.done) return;
+        result.value.then(res => {
+          next(res);
+        });
+      }
+      // 3.开始执行生成器
+      next();
+    }
+
+    autoRunGenerator(getData3);
+
+  </script>
+</body>
+</html>

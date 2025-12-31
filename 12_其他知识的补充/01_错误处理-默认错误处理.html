@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    //1.遇到报错之后后面的代码全部不执行了，因为遇到了异常中断执行流程
+    // function foo() {
+    //   'abc'.filter();
+    //   console.log('foo');
+    // }
+    // foo();
+
+    // 2.自己封装一些工具
+    function sum(num1, num2) {
+      if (typeof num1 !== 'number' || typeof num2 !== 'number') {
+        throw '类型错误，请传入数字类型的参数'
+      }
+      return num1 + num2;
+    }
+    const res = sum(['a', 'b'], ['c', 'd']);
+  </script>
+</body>
+</html>

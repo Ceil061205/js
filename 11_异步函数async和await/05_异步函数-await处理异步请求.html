@@ -17,15 +17,16 @@
     }
     async function fetchData() {
       // 自己写的错误捕获
-     try {
+    //  try {
       const res1 = await requestData('sss')
        console.log(res1);
        const res2 = await requestData('sss1')
-       console.log(res2);}
-       catch (err) {
-        console.log('error', err);
+       console.log(res2);
       }
-    }
+      //  catch (err) {
+      //   console.log('error', err);
+      // }
+    // }
     fetchData().catch(err => console.log('error', err));
   </script>
 </body>
