@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form class="info">
+    <input type="text" name="name">
+  </form>
+  <button>发送请求</button>
+  <script>
+    const form = document.querySelector('.info');
+    const btn = document.querySelector('button');
+    btn.onclick = function() {
+
+    // 1.
+    const xhr = new XMLHttpRequest();
+    // 2.onload监听事件加载完毕
+    xhr.onload = function() {
+      console.log(xhr.response);
+      // 判断状态码是否在200-300之间，如果是则请求成功
+      if (xhr.status >= 200 && xhr.status < 300) {
+        console.log('请求成功', xhr.status, xhr.statusText);
+        // console.log(xhr.response);
+      } else {
+        console.log('请求失败', xhr.status, xhr.statusText);
+      }
+    }
+    // 3.告知xhr获取数据的类型,就不需要手动解析转化json了
+    xhr.responseType = 'json';
+
+    // 4.配置网络请求
+    // 4.1 传递方式一 get->query
+    // xhr.open('GET', 'https://jsonplaceholder.typicode.com/get?query=123&id=123&name=zhangsan');
+    // 4.2 传递方式二 post请求更安全 post->urlencoded
+    // xhr.open('post', 'https://jsonplaceholder.typicode.com/posts');
+    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // xhr.send("name=zhangsan&age=18");
+
+
+    // xhr.open('post', 'https://jsonplaceholder.typicode.com/posts');
+    // // 4.3 传递方式三 form-data 发送文件
+    // const formData = new FormData(form);
+    // // 5.发送请求(请求体body)
+    // xhr.send(formData);
+
+    // 4.3 传递方式四 json
+    xhr.open('post', 'https://jsonplaceholder.typicode.com/posts');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    // 5.发送请求(请求体body)
+    xhr.send(JSON.stringify({ name: 'zhangsan', age: 18 }));
+  }
+  </script>
+</body>
+</html>

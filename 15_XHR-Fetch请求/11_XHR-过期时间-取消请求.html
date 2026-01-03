@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>取消示例</button>
+  <script>
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        console.log(JSON.parse(xhr.responseText));
+      } else {
+        console.error('Error:', xhr.status);
+      }
+    };
+    xhr.ontimeout = function() {
+      console.error('Request timed out');
+    };
+    xhr.onabort = function() {
+      console.error('Request aborted');
+    };
+    // 设置超时时间（单位为毫秒）
+    xhr.timeout = 10; 
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts');
+    xhr.send();
+
+    // 手动取消结果
+    const cancelButton = document.createElement('button');
+    cancelButton.onclick = function() {
+      xhr.abort();
+      console.log('Request cancelled');
+    };
+    cancelButton.textContent = '取消请求';
+
+  </script>
+</body>
+</html>

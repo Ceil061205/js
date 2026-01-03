@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function hyajax({
+      url,
+      method = 'GET',
+      timeout = 1000,
+      data = {},
+      headers = {}, //token, cookie, ...
+      success,
+      error,
+    } = {}) {
+          const xhr = new XMLHttpRequest();
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+        // console.log(xhr.response);
+        success && success(xhr.response);}
+        else {
+          error && error(xhr.status);
+        }
+      };
+
+      if (method.toLocaleUpperCase() === 'GET') {
+        xhr.open(method, url + '?' + new URLSearchParams(data), true);
+        xhr.send();
+      } else if (method === 'POST') {
+        xhr.open(method, url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(data));
+      }
+    }
+    hyajax({
+      url: 'https://jsonplaceholder.typicode.com/posts',
+      method: 'post',
+      data: {
+        userId: 1,
+        title: 'foo',
+        body: 'bar'
+      },
+      // 回调拿到数据
+      success: function (res) {
+        console.log(res);
+      },
+      error: function (err) {
+        console.log(err);
+      },
+    });
+  </script>
+</body>
+</html>
