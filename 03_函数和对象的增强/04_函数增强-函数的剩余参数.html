@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // rest参数就是一个真正的数组,替代了arguments
+    // 剩余参数需要卸载所有参数的最后
+    function foo(num1, ...args) {
+      // 将剩余参数放入args中
+      console.log(args);
+    }
+    foo(1, 2, 3);
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo() {
+      var name = "foo";
+      var age = 20; // 没有访问的,浏览器会优化释放掉,car闭包中也就没有这个变量
+      function bar() {
+        console.log(name);
+      }
+      return bar;
+    }
+    var adder = foo();
+    adder();
+
+
+  </script>
+</body>
+</html>

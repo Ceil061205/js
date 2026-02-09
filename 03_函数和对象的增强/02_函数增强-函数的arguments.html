@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo (m, n) {
+      // console.log('foo');
+      // 类似数组对象 arguments 包含了所有传递给函数的参数。不能调用数组的方法，比如 push, pop 等。
+        // console.log(arguments[0]);
+        // for (let i = 0; i < arguments.length; i++) {
+        //   console.log(arguments[i]);
+        // }
+        // for (var arg of arguments) {
+        //   console.log(arg);
+        // }
+
+        // 将 arguments 对象转换为数组
+        const argsArray = Array.from(arguments);
+        console.log(argsArray);
+        // 使用扩展运算符将 arguments 对象转换为数组
+        const argsArray2 = [...arguments];
+        console.log(argsArray2);
+        // 使用 Array.prototype.slice 方法将 arguments 对象转换为数组
+                                   [].slice.call(arguments);
+        const argsArray3 = Array.prototype.slice.call(arguments);//call把this指向换成arguments对象
+        console.log(argsArray3);
+        // 使用 Array.prototype.map 方法将 arguments 对象转换为数组
+        const argsArray4 = Array.prototype.map.call(arguments, (arg) => arg);
+        console.log(argsArray4);
+        // 使用 Array.prototype.reduce 方法将 arguments 对象转换为数组
+        const argsArray5 = Array.prototype.reduce.call(arguments, (acc, arg) => {
+          acc.push(arg);
+          return acc;
+        }, []);
+        console.log(argsArray5);
+        // 使用 Array.prototype.filter 方法将 arguments 对象转换为数组
+        const argsArray6 = Array.prototype.filter.call(arguments, (arg) => true);
+        console.log(argsArray6);
+      }
+    foo(1, 2, 3, 4);
+
+      
+  </script>
+</body>
+</html>

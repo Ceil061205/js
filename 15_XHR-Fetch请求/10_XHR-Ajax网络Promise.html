@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function hyajax({
+      url,
+      method = 'GET',
+      timeout = 1000,
+      data = {},
+      headers = {}, //token, cookie, ...
+    } = {}) {
+      const xhr = new XMLHttpRequest();
+      const promise = new Promise((resolve, reject) => {
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            // console.log(xhr.response);
+            resolve(xhr.response);
+          }
+          else {
+            reject(xhr.status);
+          }
+        };
+
+        if (method.toLocaleUpperCase() === 'GET') {
+          xhr.open(method, url + '?' + new URLSearchParams(data), true);
+          xhr.send();
+        } else if (method === 'POST') {
+          xhr.open(method, url, true);
+          xhr.setRequestHeader('Content-Type', 'application/json');
+          xhr.send(JSON.stringify(data));
+        }});
+        promise.xhr = xhr;
+        return promise;
+    }
+    const pro = hyajax({
+      url: 'https://jsonplaceholder.typicode.com/posts',
+      method: 'GET'
+    });
+    // pro.xhr.timeout = 1000;
+    pro.then(res => {
+      console.log(JSON.parse(res));
+    }).catch(err => {
+      console.log(err);
+    });
+  </script>
+</body>
+</html>

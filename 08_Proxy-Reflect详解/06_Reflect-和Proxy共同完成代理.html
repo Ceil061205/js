@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const obj = {
+      name: 'John',
+      age: 30,
+    }
+    const objProxy = new Proxy(obj, {
+      set: function (target, key, newValue, receiver) {
+        // target[key] = newValue;
+        // 1.好处一:代理对象的目的: 不再直接修改原始对象
+        // 2.好处二: Reflect.set()有返回值,可以判断是否设置成功
+        const isSuccess = Reflect.set(target, key, receiver); // 调用Reflect的set方法，并传入参数
+        if (!isSuccess) {
+          throw new Error(`Cannot set ${key} to ${newValue}`);
+        }
+      },
+      get: function (target, key, receiver) {
+        // return Reflect.get(...arguments);
+      }
+    });
+
+    // 操作代理对象
+    objProxy.age = 31; // 这里会触发 set 方法
+    console.log(obj); // { name: 'John', age: 30 }，因为代理对象并未更新原始对象的值
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person {
+      // 1.对象属性: public 公共的
+      height = 1.88;
+
+      // 对象属性: private 私有的 约定俗成, 并不是真正的私有
+      // _intro = 'xxx';
+      #intro = 'xxx'; // 真正的私有属性, 只能在类内部使用
+
+      // 2.类属性: static 
+      // 类属性 public
+      static total = 0;
+
+      static #accessor = 'xxx';
+
+
+      constructor(name, age) {
+        // 对象中的属性:在constructor通过this设置
+        this.name = name;
+        this.age = age;
+        this.address = '北京市';
+      }
+      
+      // 3.静态代码块,只会执行一次
+      static {
+        console.log('静态代码块');
+      }
+    }
+    const p = new Person('张三', 18);
+    console.log(p);
+    console.log(p.name, p.age, p.address, p.height);
+    console.log(Person.total);
+    
+  </script>
+</body>
+</html>

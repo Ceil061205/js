@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // const let 在执行之前有被提前创建出来,但是无法被访问
+
+    console.log(msg);//undefined
+    // var有声明提升的特性，即在代码执行之前就已经被提升了。 
+    var msg = "Hello World";
+
+    console.log(msg2); // ReferenceError: msg2 is not defined
+    let msg2 = "Hello World";
+    // let和const没有声明提升的特性，即在代码执行之前不会被提升。
+    const info = {}
+
+  </script>
+</body>
+</html>

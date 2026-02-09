@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var msg = "Hello World";
+    msg = "Hello Worl1d";
+
+    let msg2 = "Hello World";
+    msg2 = "Hello Worl1d"; 
+    console.log(msg2);
+    
+    // 常量声明，不能被重新赋值
+    const msg3 = "Hello World";
+    msg3 = "Hello Worl1d"; 
+    console.log(msg3);//error
+    
+    const info = {
+      name: "John",
+      age: 30
+    };
+    // info = {}; // 错误，不能重新赋值一个新对象给常量
+    info.age = 25; // 可以修改对象的属性值，但不能重新赋值
+    console.log(info);
+  </script>
+</body>
+</html>

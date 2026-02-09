@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person {
+      constructor(name) {
+        this.name = name;
+      }
+      running() {
+        console.log(this.name + " is running");
+      }
+    }
+    class Student extends Person {
+      constructor(name, age) {
+        // super要放在子类构造函数的第一行，否则会报错。
+        super(name);
+        this.age = age;
+      }
+      study() {
+        console.log(this.name + " is studying");
+      }
+    }
+    const stu1 = new Student("Tom", 18);
+    stu1.running();
+    stu1.study();
+
+  </script>
+</body>
+</html>

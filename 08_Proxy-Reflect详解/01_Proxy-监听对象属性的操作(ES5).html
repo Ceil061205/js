@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- vue2的原理 -->
+<body>
+  <script>
+    const obj = {
+      name: 1,
+      age: 2,
+      c: 3
+    }
+  let _name = obj.name;
+  // 监听对象属性的操作
+  // Object.defineProperty(obj, 'name', {
+  //   get() {
+  //     console.log('我被访问了');
+  //     return this._name;
+  //   },
+  //   set(value) { // 当我们给对象属性赋值的时候，就会触发这个函数
+  //     console.log('我被赋值了');
+  //     this._name = value; 
+  //   }
+  // })
+
+  // 监听对象所有属性的操作
+  const keys = Object.keys(obj);
+  for (const key of keys) {
+    let value = obj[key]; // 获取对象属性值
+    Object.defineProperty(obj, key, {
+      get() { 
+        console.log('我被访问了');
+        return value;
+      },
+      set(newvalue) {
+        console.log('我被赋值了');
+        value = newvalue; 
+      }
+    })
+  }
+
+  obj.name = 10; 
+  obj.age = 20; 
+  // const nameEl = document.querySelector('.name');
+  // nameEl.textContent = obj.name;
+
+  // obj.name = 'kkk';
+  // nameEl.textContent = obj.name;// 修改了对象属性，但是没有更新到页面上
+  
+  </script>
+</body>
+</html>

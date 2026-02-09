@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var names = ["John", "Jane", "Doe"];
+    // slice纯函数
+    var newSArr = [].slice.apply(names, [1, 3]);// 不会改变原始数组，而是返回一个新的数组。
+    console.log(names);
+
+    // splice会改变原始数组，并返回被删除的元素组成的数组。不是纯函数
+    var newArr = names.splice(1, 2);
+    console.log(names);// 输出: ["John"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    //你提到的 `[].slice.apply(names, [1, 3]);` 是一种 **早期 JavaScript 中用来截取数组的写法**，它利用了 `Function.prototype.apply()` 方法的特性。我们可以一步步拆解来看。
+
+//       ---
+
+// ## 1. 核心结构
+
+//         ```js
+// [].slice.apply(names, [1, 3]);
+// ```
+
+//       可以分解成：
+
+//       1. `[]`：创建一个空数组。
+//       2. `.slice`：调用数组的 `slice` 方法（它可以截取数组的一部分）。
+//       3. `.apply(names, [1, 3])`：用 `apply` 来调用 `slice` 方法，并将 `names` 作为 `this`，把 `[1, 3]` 作为参数数组传入。
+
+//       ---
+
+// ## 2. 工作原理
+
+//         - `slice` 方法的标准调用方式是：
+//       ```js
+//   array.slice(start, end);
+//   ```
+//       例如：
+//       ```js
+//   ['a', 'b', 'c', 'd'].slice(1, 3); // ['b', 'c']
+//   ```
+
+//         - `apply` 方法的作用是：
+//       ```js
+//   func.apply(thisArg, [argsArray]);
+//   ```
+//       它会调用 `func`，并将 `thisArg` 作为 `this`，把 `argsArray` 里的元素展开成参数。
+
+//       所以：
+//       ```js
+// [].slice.apply(names, [1, 3]);
+// ```
+//       等价于：
+//       ```js
+// names.slice(1, 3);
+// ```
+
+//       ---
+
+// ## 3. 为什么要这么写？
+
+//       在 ** ES5 之前 **，有些对象（比如类数组对象，像 `arguments`、DOM `NodeList`）并没有 `slice` 方法，但是它们有 `length` 属性和按索引访问的能力。
+
+//       如果直接写：
+//       ```js
+// arguments.slice(1, 3); // ❌ 会报错，因为 arguments 不是数组
+// ```
+
+//       我们就可以借用数组的 `slice` 方法，通过 `apply` 来让它作用在类数组对象上：
+//       ```js
+// [].slice.apply(arguments, [1, 3]); // ✅ 成功截取
+// ```
+
+//       这种写法的好处：
+//       - 不用手动把类数组转成数组。
+//       - 利用了`slice` 对类数组对象的兼容性。
+
+//       ---
+
+// ## 4. 等价写法
+
+// 现代 ES6 中，我们可以用更简洁的方式实现同样的效果：
+
+//       ```js
+// Array.prototype.slice.call(names, 1, 3);
+// ```
+//       或者：
+//       ```js
+// Array.from(names).slice(1, 3);
+// ```
+//       或者：
+//       ```js
+// [...names].slice(1, 3);
+// ```
+
+//       ---
+
+// ## 5. 示例
+
+//         ```js
+// const names = ['Alice', 'Bob', 'Charlie', 'David'];
+
+// // 旧写法
+// const result1 = [].slice.apply(names, [1, 3]);
+// console.log(result1); // ['Bob', 'Charlie']
+
+// // 等价的现代写法
+// const result2 = names.slice(1, 3);
+// console.log(result2); // ['Bob', 'Charlie']
+// ```
+
+//       ---
+
+// ✅ ** 总结 **：
+//       - `[].slice.apply(obj, [start, end])` 是早期用来“借用”数组的 `slice` 方法去截取类数组对象的写法。
+//       - 在现代 JavaScript 中，这种写法已经很少见，因为我们可以用 `Array.from` 或扩展运算符 `...` 更直观地实现。
+    
+  </script>
+</body>
+</html>

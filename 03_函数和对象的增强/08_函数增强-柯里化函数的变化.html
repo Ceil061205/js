@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 柯里化:不会调用函数,只对函数进行转换 -->
+  <script>
+    function add(a, b, c) {
+      return a + b + c;
+
+    }
+    console.log(add(10, 20, 30));
+
+    // 柯里化
+    function curry(a) {
+        return function (b) {
+          return function (c) {
+            return a + b + c;
+          }
+      }
+    }
+    console.log(curry(10)(20)(30));
+
+    // 另外一种写法
+    var foo3 = x => y => z => x + y + z;
+    console.log(foo3(10)(20)(30));
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const names = ['John', 'Jane', 'Doe'];
+    const nums = [1, 2, 3];
+
+    function createArrayIterator(arr) {
+      let index = 0;
+      return {
+        next: function() {
+          if (index < arr.length) {
+            const value = arr[index++];
+            return { done: false, value };
+          } else {
+            return { done: true };
+          }
+        },
+      };
+    }
+
+    const namesIterator = createArrayIterator(names);
+    console.log(namesIterator.next()); // Output: {done: false, value: 'John'}
+    console.log(namesIterator.next()); // Output: {done: false, value: 'Jane'}
+    console.log(namesIterator.next()); // Output: {done: false, value: 'Doe'}
+    console.log(namesIterator.next()); // Output: {done: true}
+
+    const numsIterator = createArrayIterator(nums);
+    console.log(numsIterator.next()); // Output: {done: false, value: 1}
+    console.log(numsIterator.next()); // Output: {done: false, value: 2}
+    console.log(numsIterator.next()); // Output: {done: false, value: 3}
+    console.log(numsIterator.next()); // Output: {done: true}
+
+
+
+  </script>
+</body>
+</html>

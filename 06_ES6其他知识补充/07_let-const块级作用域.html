@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var没有块级作用域
+    // 1.在ES5之前,只有全局和函数才会形成自己的作用域
+    // 代码块 
+    function test() {
+      console.log('Hello, world!');
+    }
+    test();
+
+    // 2.ES6新增了let和const关键字,它们声明的变量有块级作用域(let const function class)
+    // foo()//但是不能在前面调用foo函数
+    {
+      let a = 10;
+      const b = 20;
+      class Person {}
+      function foo() {
+        console.log('aaa');
+      }
+    }
+    // 外部访问不到a和b
+    // console.log(a);
+    // console.log(b);
+    // const p = new Person();
+    foo();//函数可以被访问到,浏览器做了特殊处理
+  </script>
+</body>
+</html>

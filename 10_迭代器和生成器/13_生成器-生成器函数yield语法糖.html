@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const names = ['John', 'Jane', 'Doe'];
+    const ages = [25, 30, 22];
+    function* createArrayIterator(arr) {
+      yield* arr; // yield* 后跟可迭代对象，它会迭代 arr 中的每个元素并逐个 yield 它们。
+    }
+    const iterator = createArrayIterator(names);
+    console.log(iterator.next().value); // 输出: John
+    console.log(iterator.next().value); // 输出: Jane
+    console.log(iterator.next().value); // 输出: Doe
+    console.log(iterator.next().value); // 输出: undefined，因为迭代器已经完成
+
+    // 使用 yield* 迭代对象属性
+    class Person {
+        constructor(name, friends) {
+          this.name = name;
+          this.friends = friends;
+        }
+        // 实例方法
+        *[Symbol.iterator]() {
+          yield* this.friends; // 迭代 friends 数组中的元素
+        }
+      }
+    const person = new Person('Alice', ['Bob', 'Charlie']);
+    for (const friend of person) {
+      console.log(friend); // 输出: Bob, Charlie
+    }
+  </script>
+</body>
+</html>

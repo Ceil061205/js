@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person {
+      constructor(name) {
+        // _开头是私有字段的声明方式,是一种约定俗成的写法，并不是真正的私有字段。不能通过外部直接访问。
+        this._name = name;
+
+      }
+      get name() {
+        return this._name;
+      }
+      set name(value) {
+        this._name = value;
+      }
+    }
+    const person = new Person('John Doe');
+    console.log(person.name); // 输出: John Doe
+
+
+    // 访问器的应用场景
+    class Rectangle {
+      constructor(width, height) {
+        this._width = width;
+        this._height = height;
+      }
+      get area() {
+        return this._width * this._height;
+      }
+    }
+    const rect = new Rectangle(10, 5);
+    console.log(rect.area); // 输出: 50
+  </script>
+</body>
+</html>

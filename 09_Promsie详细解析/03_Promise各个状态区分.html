@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.创建一个Promise对象
+    const promise = new Promise((resolve, reject) => {
+      // promise的状态一旦确定后,就不能再更改了
+      // 1.pending状态,待定状态
+      console.log('111');
+      // 2.执行resolve,将状态改为fulfilled(成功),并传递结果
+      // resolve('Success!1');
+      // 3.执行reject,将状态改为rejected(失败),并传递错误信息
+      // reject('Error!1');
+    });
+
+    promise.then((message) => {
+      console.log(message);
+    }).catch((error) => {
+      console.error(error);
+    })
+
+    // 通过excutor中确定Promise的状态
+    const promise2 = new Promise((resolve, reject) => {
+
+    });
+  </script>
+</body>
+</html>

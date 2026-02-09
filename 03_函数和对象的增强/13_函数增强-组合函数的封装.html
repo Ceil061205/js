@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a = 10;
+    function double(num) {
+      return num * 2;
+    }
+    function pow(num) {
+      return num ** 2;
+    }
+    function composeFn(...fns) {
+      // 1.边界判断
+      // for (var fn of fns) {
+      //   if (typeof fn !== 'function') {
+      //     throw new Error('参数必须是函数');
+      //     break;
+      //   }
+      // }
+      var length = fns.length;
+      if (length <= 0) return;
+      for ( var i = 0; i < fns.length; i++) {
+        var fn = fns[i];
+        if (typeof fns[i] !== 'function') {
+          throw new Error(`index ${i} must be a function`);
+        }
+      }
+
+      // 2.返回的新函数
+      return function (...args) {
+        var result = fns[0].apply(this, args);
+        for (var i = 1; i < fns.length; i++) {
+          var fn = fns[i];
+          result = fn.apply(this, [result]);
+        }
+        return result;
+      };
+
+    }
+    var newFn = composeFn(double, pow);
+    console.log(newFn(a));
+
+  </script>
+</body>
+</html>

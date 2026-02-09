@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.
+    const xhr = new XMLHttpRequest();
+    // 2.onload监听事件加载完毕
+    xhr.onload = function() {
+      console.log(xhr.response);
+      // 判断状态码是否在200-300之间，如果是则请求成功
+      if (xhr.status >= 200 && xhr.status < 300) {
+        console.log('请求成功', xhr.status, xhr.statusText);
+      } else {
+        console.log('请求失败', xhr.status, xhr.statusText);
+      }
+    }
+    xhr.onerror = function() {
+      console.log('请求失败', xhr.status, xhr.statusText);
+    }
+    // 3.告知xhr获取数据的类型,就不需要手动解析转化json了
+    xhr.responseType = 'json';
+
+    // 4.配置网络请求
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts');
+    // 5.发送请求
+    xhr.send();
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var obj = {
+      // 默认是writable:true,enumerable:true,configurable:true;
+      name: "John",
+      age: 30,
+      greet() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old`);
+      }
+    };
+    obj.greet(); // Outputs: Hello, my name is John and I am 30 years old
+    Object.defineProperty(obj, "age", {
+      configurable: false,//告诉js引擎，不允许删除属性
+
+
+    });
+    delete obj.age; // 尝试删除属性
+    console.log(obj.age); // 输出: 30，属性没有被删除
+    Object.defineProperty(obj, "name", {
+      enumerable: false,//告诉js引擎，不允许枚举属性
+
+    });
+    for (let key in obj) {
+      console.log(key); // 不输出 'name' 属性被设置为不可枚举
+    }
+    
+    Object.defineProperty(obj, "address", {
+      value: "123 Main St", // 设置属性的值  访问的话就返回这个值
+      writable: true, // 允许修改属性值
+      enumerable: false, // 不允许枚举该属性
+      configurable: false // 不允许删除或更改属性描述符
+    }); // 创建一个新的属性，默认是 writable:true,enumerable:false,configurable:false;
+    console.log(obj.address); 
+    console.log(Object.keys(obj));// 输出: ['age','greet']，因为'address'是不可枚举的
+    
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo() {
+      console.log("foo");
+      // 1.string/number/boolean
+      // throw 'aaa';
+      // 2.对象
+      // throw {name: 'aaa'};
+      // 3.error
+      throw new Error('错误信息');
+      console.log("bar");
+    }
+    foo();
+  </script>
+</body>
+</html>

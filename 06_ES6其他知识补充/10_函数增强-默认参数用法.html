@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 默认值写法 不会对nul进行处理,会认为null是有效的值，不会使用默认值。
+    function foo(arg1 = "default value") {
+      // 两种写法不严谨
+      // arg1 = arg1 ? arg1 : "default value";
+      // arg1 = arg1 || "default value";
+
+      // 严谨写法
+      // arg1 = (arg1 === undefined || arg1 === null)? "default value" : arg1;
+
+      // 新增的写法 ??
+      // arg1 = arg1 ?? "default value";// 只有arg1为null或者undefined时，才会使用默认值"default value";
+      console.log(arg1);
+    }
+    foo(null)
+  </script>
+</body>
+</html>

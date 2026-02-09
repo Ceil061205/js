@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.weak reference弱引用 strong reference强引用
+    // let obj1 = { name: 'why' };
+    // let obj2 = { name: 'lee' };
+    // let obj3 = { name: 'coder' };
+
+    // let arr = [obj1, obj2, obj3];
+    // obj1 = null;
+    // obj2 = null;
+    // obj3 = null;
+
+    // const set = new Set(arr);
+    // arr = null;
+
+    // 2.WeakSet
+    // 2.1 和Set的区别
+    // 2.1.1 WeakSet只能存储对象引用，不能存储基本数据类型
+    // let ws = new WeakSet();
+    // ws.add(100); // TypeError: Invalid value used in weak set
+    // ws.add('abc'); // TypeError: Invalid value used in weak set
+
+    let obj1 = { name: 'why' };
+    let obj2 = { name: 'lee' };
+    let obj3 = { name: 'coder' };
+
+    let arr = [obj1, obj2, obj3];
+    obj1 = null;
+    obj2 = null;
+    obj3 = null;
+
+    const ws = new WeakSet(arr);
+    arr = null;
+
+    // 2.2.2 WeakSet中的对象都是弱引用，如果没有其他的变量或属性引用这个对象，那么它会被自动回收掉
+    // 2.2.3 WeakSet不能迭代，因此没有办法拿到它包含的所有元素
+    // for (let item of ws) {
+    //   console.log(item); // TypeError: ws is not iterable
+    // }
+    
+    // 3. 应用场景
+    const wSet = new WeakSet();
+    class Person {
+      constructor() {
+        wSet.add(this);
+      }
+      running() {
+        if (!wSet.has(this)) {
+          throw new TypeError('Person.running: 不能在实例化之后调用');
+          return;
+        }
+        console.log('跑步');
+      }
+    }
+    const p = new Person();
+    // p = null; //好销毁
+    p.running();
+    
+
+
+  </script>
+</body>
+</html>

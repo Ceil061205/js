@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 网页的解析是:
+   遇到script标签，会暂停解析DOM文档，并执行脚本代码。下载完再继续解析DOM文档。
+    如果脚本是外部的，则会先下载再执行。
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 放在这里让浏览器提前下载 defer对外部的js才有意义 -->
+  <script src="./js/test.js" defer></script>
+</head>
+<body>
+  <div class="app">111</div>
+  <!-- defer 
+    defer 属性表示脚本在文档完全解析完成后，DOM构建完成之后执行。
+    多个带有 defer 属性的脚本，会按照它们在文档中出现的顺序执行。
+  -->
+  
+  <script>
+    // DOMContentLoaded 事件会在文档的 DOM 被完全加载和解析完成后立即触发，不需要等待样式表、图片和子框架完成加载。
+    // defer在DOMContentLoaded事件触发之前后执行。
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('DOMContentLoaded');
+    })
+  </script>
+  <!-- 这里的代码会在 defer 的脚本执行之前被解析和渲染。 -->
+  <div>aaaa</div>
+</body>
+</html>

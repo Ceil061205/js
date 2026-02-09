@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo(name, age) {
+      console.log(this, name, age)
+    }
+    function test() {}
+    foo.apply("abc", [1, 2]);
+    // 对象中某些属性和方法是来自Function.prototype
+    console.log(Function.prototype.call);
+
+    // 在Function.prototype上添加一个方法,所有的函数都可以使用该方法
+    Function.prototype.myCall = function() {
+      // 1. 判断调用对象是否为函数
+     console.log('mycall');
+    }
+    test.myCall();
+
+    Array.prototype.slice.apply(arguments);
+    [].slice.apply(arguments);
+    // slice 的核心作用是利用其 “遍历类数组并返回新数组” 的特性，把无法直接使用数组方法的 arguments 转换成真正的数组。这是 ES5 时代解决「类数组转数组」的标准写法，核心依赖 slice 对 this 不强制为数组的宽松设计，以及 apply/call 改变 this 的能力。
+
+  </script>
+</body>
+</html>

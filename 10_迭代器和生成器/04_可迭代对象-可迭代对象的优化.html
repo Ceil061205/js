@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 将infos变成可迭代对象
+    // 1.必须实现一个特定的函数
+    // 2.该函数必须返回一个迭代器(这个迭代器用于迭代当前的对象)
+    const infos = {
+      friends: [ "John", "Jane" ],
+      [Symbol.iterator]() {
+        let index = 0;
+        const InfosIterator = {
+          next: () => {
+            if (index < this.friends.length) {
+              return { done: false, value: this.friends[index++] };
+            } else {
+              return { done: true };
+            }
+          },
+        };
+        return InfosIterator;
+      },
+    };
+
+    // 2.迭代info中的keys和values
+    const info = {
+      name: "John",
+      age: 30,
+      [Symbol.iterator]: function() {
+        // 迭代keys
+        // 迭代values
+        // 迭代entries
+        // const entries = Object.entries(this);
+        const iterator = {
+          next: function() {
+            if (this.index < Object.keys(this).length) {
+              return { done: false, value: this[Object.keys(this)[this.index++]] };
+            } else {
+              return { done: true };
+            }
+          },
+        };
+        iterator.index = 0;
+        return iterator;
+      },
+    };
+    for (const key of info) {
+      console.log(key);
+    }
+  </script>
+</body>
+</html>

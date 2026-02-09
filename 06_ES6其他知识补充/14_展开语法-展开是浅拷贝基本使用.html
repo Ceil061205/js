@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const names = ['John', 'Jane', 'Doe'];
+    const str = 'Hello, World!';
+    function printNames(name1, name2, ...args) {
+      console.log(name1, name2, args);
+    }
+    printNames(...names);
+    printNames(...str)
+
+    // ES9
+    const obj = {
+      name: 'John',
+      age: 30,
+    };
+    // 不可以直接使用展开运算符,将对象进行迭代
+    // printNames(...obj)//在函数调用时,用展开运算符,将对应的展开数据,进行迭代
+    // 可迭代对象:数组,字符串,aruguments对象
+
+    const info = {
+      ...obj,
+      history: 'developer'
+    };
+    console.log(info);
+    
+  </script>
+</body>
+</html>

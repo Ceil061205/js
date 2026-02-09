@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.暂时性死区TDZ
+    function foo() {
+      // 从块级作用域的顶部一直到变量声明之前,这里的bar是暂时性死区，不能被访问
+      console.log(bar);
+  
+      console.log(11);
+      
+      let bar = "bar";
+    }
+    foo()
+
+    // 2.暂时性死区和定义的位置没有关系,和代码的执行顺序有关
+    function bar() {
+      console.log(msg);
+    }
+    let msg = "msg";
+    foo();//可以访问到msg，因为foo函数执行的时候，msg已经声明了
+    console.log(msg);
+
+    // 3.暂时性死区形成之后,在该区域内这个标识符就不能被访问了
+    let msg1 = "msg";
+    function baz() {
+      // 有自己的吸纳访问自己的
+      console.log(msg1);//在函数内部访问不到msg1，因为暂时性死区已经形成
+      let msg1 = "msghhhhh";
+    }
+    baz();
+
+
+    
+    
+
+  </script>
+</body>
+</html>

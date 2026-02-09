@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>面向对象继承</title>
+</head>
+
+<body>
+  <script>
+    // ================ 1. ES5 原型链继承（传统方式） ================
+    // 父类：动物
+    function Animal(name) {
+      this.name = name; // 实例属性
+      this.eat = function () { // 实例方法
+        console.log(`${this.name} 在吃东西`);
+      }
+    }
+    // 父类原型方法（共享方法）
+    Animal.prototype.sleep = function () {
+      console.log(`${this.name} 在睡觉`);
+    }
+
+    // 子类：狗（继承 Animal）
+    function Dog(name, breed) {
+      // 继承父类的实例属性（构造函数继承）
+      Animal.call(this, name);
+      this.breed = breed; // 子类独有属性
+    }
+
+    // 继承父类原型方法（原型链继承）
+    Dog.prototype = Object.create(Animal.prototype);
+    // 修复构造函数指向（否则 Dog 实例的 constructor 会指向 Animal）
+    Dog.prototype.constructor = Dog;
+
+    // 子类独有方法
+    Dog.prototype.bark = function () {
+      console.log(`${this.name}（${this.breed}）在汪汪叫`);
+    }
+
+    // 测试 ES5 继承
+    const goldenRetriever = new Dog('旺财', '金毛');
+    console.log('===== ES5 继承测试 =====');
+    goldenRetriever.eat();    // 继承父类实例方法
+    goldenRetriever.sleep();  // 继承父类原型方法
+    goldenRetriever.bark();   // 子类独有方法
+    console.log('狗的名字：', goldenRetriever.name); // 继承的属性
+    console.log('狗的品种：', goldenRetriever.breed); // 子类自有属性
+    console.log('构造函数指向：', goldenRetriever.constructor === Dog); // true
+
+
+    // ================ 2. ES6 class 继承（现代方式，语法糖） ================
+    class AnimalES6 {
+      // 构造函数
+      constructor(name) {
+        this.name = name;
+      }
+
+      // 实例方法（原型方法）
+      eat() {
+        console.log(`${this.name} 在吃东西`);
+      }
+
+      sleep() {
+        console.log(`${this.name} 在睡觉`);
+      }
+    }
+
+    // 子类：猫（继承 AnimalES6）
+    class Cat extends AnimalES6 {
+      constructor(name, color) {
+        super(name); // 调用父类构造函数（必须先调用 super）
+        this.color = color; // 子类独有属性
+      }
+
+      // 子类独有方法
+      meow() {
+        console.log(`${this.name}（${this.color}色）在喵喵叫`);
+      }
+
+      // 重写父类方法（方法覆盖）
+      eat() {
+        console.log(`${this.name} 优雅地吃小鱼干`);
+      }
+    }
+
+    // 测试 ES6 继承
+    const persianCat = new Cat('咪咪', '白');
+    console.log('\n===== ES6 继承测试 =====');
+    persianCat.eat();     // 重写后的父类方法
+    persianCat.sleep();   // 继承的父类方法
+    persianCat.meow();    // 子类独有方法
+    console.log('猫的名字：', persianCat.name); // 继承的属性
+    console.log('猫的颜色：', persianCat.color); // 子类自有属性
+  </script>
+</body>
+
+</html>

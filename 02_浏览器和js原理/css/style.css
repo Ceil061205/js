@@ -1,0 +1,14 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.box, .container {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  font-size: 15px;
+  color: red;
+}
+.container {
+  background-color: #208b5b;
+}

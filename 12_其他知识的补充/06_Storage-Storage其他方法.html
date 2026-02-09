@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l';
+    console.log(localStorage.length);
+    localStorage.setItem(ACCESS_TOKEN, access_toke);
+    console.log(localStorage.getItem(ACCESS_TOKEN));
+
+    console.log(localStorage.key(0));//获取第一个键值对的key
+    console.log(localStorage.key(1));//获取第二个键值对的key
+    console.log(localStorage.removeItem(ACCESS_TOKEN));
+    localStorage.clear();
+    
+
+    
+  </script>
+</body>
+</html>

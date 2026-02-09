@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict"
+    const obj = {
+      name: 'John',
+      age: 30,
+    }
+
+    // Object.defineProperty(obj, 'age', {
+    //   enumerable: false,
+    //   configurable: true,
+    // });
+    // Reflect.defineProperty(obj, 'age', {
+    //   enumerable: true,
+    //   configurable: false,
+    // });
+
+    // 1.delete这种操作不知道有没有删除成功
+    delete obj.age;
+    console.log(obj); // { name: 'John' }
+
+    // 2.Reflect
+    if (Reflect.deleteProperty(obj, 'name')) {
+      console.log('name属性被删除');
+    } else {
+      console.log('name属性没有被删除');
+    }
+  </script>
+</body>
+</html>

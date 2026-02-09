@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const info = { name: "John"};
+    const info2 = { age: 35 };
+
+    const obj = {
+      address: "123 Main St",
+      [info]: "John",
+      [info2]: "John Doe",
+      // 对象里键只能是字符串或者symbol,如果不是字符串则会调用toString方法转为字符串
+      // 只能有一个键名,后面的会覆盖前面的,[Object object]是toString的结果,所以后面的会覆盖前面的
+    }
+    console.log(obj);
+
+    // 使用Map可以解决这个问题,因为Map的键可以是任意值
+    const map = new Map();
+    map.set(info, "John");
+    map.set(info2, "John Doe");
+    console.log(map);
+
+    // map属性方法
+    map.has(info); // true
+    map.get(info); // "John"
+    map.delete(info); // 删除键值对，返回true或false
+    map.clear(); // 清空Map对象中的所有元素
+    map.size; // Map对象的长度（即键值对的数量）
+
+    // map foreach方法
+    map.forEach((value, key) => {
+      console.log(key, value);
+    });
+
+    // map的迭代器方法
+    // for (let item of map) {
+    for (let [key, value] of map) {
+      console.log(key, value);
+    }
+  </script>
+
+
+
+  </script>
+</body>
+</html>

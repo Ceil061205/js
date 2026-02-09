@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.创建XMLHttpRequest对象
+    const xhr = new XMLHttpRequest();
+
+    // 2.监听状态的变化(宏任务)
+    xhr.onreadystatechange = function () {
+      // console.log('statechange:', xhr.readyState);
+      if (xhr.readyState !== XMLHttpRequest.DONE) return; //1.如果还没有拿到数据,就不能对其进行操作
+
+      // 2.确定拿到了数据
+      console.log(xhr.response);
+      
+    };
+
+    // 3.配置请求
+    // aync: false: 同步请求; async: true: 异步请求
+    // 实际开发中要用异步请求, 因为同步请求会阻塞页面渲染
+    xhr.open('GET', 'http://123.207.32.32:8080/home/multidata', false);
+
+    // 4.发送请求(浏览器)
+    xhr.send();
+
+    // 变成同步
+    console.log(xhr.response);
+
+    console.log('1111');
+    
+  </script>
+</body>
+</html>

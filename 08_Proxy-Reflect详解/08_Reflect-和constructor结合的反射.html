@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    function Student(name, age) {
+      Person.call(this, name, age);
+      this.studentId = "S12345";
+    }
+
+    const stu = Reflect.construct(Person, ["John", 20], Student);
+    console.log(stu.__proto__ === Student.prototype);
+    
+  </script>
+</body>
+</html>

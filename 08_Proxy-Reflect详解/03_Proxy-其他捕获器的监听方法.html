@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- vue3的原理 -->
+<body>
+  <script>
+    const obj = {
+      name: 1,
+      age: 2,
+      c: 3
+    }
+    
+    // 1.创建一个proxy代理对象，拦截obj对象的所有属性访问
+    const proxy = new Proxy(obj, {
+      get: function (target, key) {
+        console.log(`访问了${key}属性`);
+        return target[key];
+      },
+      set: function (target, key, newValue) {
+        console.log(`设置了${key}属性，值为：${newValue}`);
+        target[key] = newValue;
+      },
+      deleteProperty: function (target, key) {
+        console.log(`删除了${key}属性`);
+        delete target[key];
+      },
+      has: function (target, key) {
+        console.log(`检查${key}属性是否存在`);
+        return key in target;
+      }
+    });
+    delete proxy.age;
+    console.log(obj);
+    console.log("age" in proxy);
+    
+  </script>
+</body>
+</html>

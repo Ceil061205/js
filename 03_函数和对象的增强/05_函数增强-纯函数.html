@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 纯函数的返回值只能和参数有关，而不能依赖于外部状态。不能有副作用，比如修改全局变量或者调用外部函数。
+    // 副作用: 引起其它变化，除了返回函数值外,比如修改全局变量或者调用外部函数。
+    // 纯函数示例
+    function add(a, b) {
+      return a + b;
+    }
+
+    console.log(add(1, 2)); // 输出: 3
+
+    // 非纯函数，依赖于外部状态
+    let count = 0;
+    function increment() {
+      count++; // 这里依赖于外部状态（全局变量）
+      return count;
+    }
+
+    console.log(increment()); // 输出: 1
+    console.log(count);
+    
+
+  </script>
+</body>
+</html>

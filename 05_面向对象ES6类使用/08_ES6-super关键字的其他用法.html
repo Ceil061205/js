@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Inheritance Demo</title>
+</head>
+
+<body>
+  <script>
+    // 修正拼写错误：Aniaml -> Animal
+    class Animal {
+      constructor(name) {
+        this.name = name;
+      }
+
+      // 实例方法
+      speak() {
+        console.log(`${this.name} makes a sound`);
+      }
+
+      // 静态方法（属于类本身，不属于实例）
+      static staticMethod() {
+        console.log('Static method called!');
+      }
+    }
+
+    // 子类 Dog 继承自 Animal
+    class Dog extends Animal {
+      constructor(name, breed) {
+        // 调用父类构造函数
+        super(name);
+        this.breed = breed;
+      }
+
+      // 重写父类的实例方法
+      speak() {
+        // 正确调用父类的实例方法（如果需要）
+        super.speak();
+        // 子类特有的实现
+        console.log(`${this.name} (${this.breed}) says Woof!`);
+
+        // ❌ 不推荐：在实例方法中调用静态方法（虽然语法上能执行）
+        // super.staticMethod(); 
+        // ✅ 正确的静态方法调用方式（通过类名）
+        // Animal.staticMethod();
+        // Dog.staticMethod();
+      }
+
+      // 子类也可以定义自己的静态方法
+      static dogStaticMethod() {
+        // 调用父类的静态方法
+        super.staticMethod();
+        console.log('Dog static method called!');
+      }
+    }
+
+    // 创建 Dog 实例
+    const dog = new Dog('Rex', 'German Shepherd');
+
+    // 调用实例方法
+    dog.speak();
+    /* 输出：
+       Rex makes a sound
+       Rex (German Shepherd) says Woof!
+    */
+
+    // 调用静态方法（通过类名调用，不是实例）
+    Animal.staticMethod(); // 输出: Static method called!
+    Dog.staticMethod();    // 输出: Static method called!（继承自父类）
+    Dog.dogStaticMethod(); // 输出: Static method called!  Dog static method called!
+
+    // ❌ 错误：实例不能调用静态方法
+    // dog.staticMethod(); // Uncaught TypeError: dog.staticMethod is not a function
+  </script>
+</body>
+
+</html>

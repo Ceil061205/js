@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function adder(num) {
+    //   return function(num) {
+    //     return counter + num;
+    //   }
+    // }
+
+    function createAdder(counter) {
+      function adder(num) {
+        return counter + num
+      }
+      return adder
+    }
+    const addFive = createAdder(5);
+    console.log(addFive(10)); // 15
+    console.log(addFive(20)); // 25
+
+    const addTen = createAdder(10);
+    console.log(addTen(10)); // 20
+    console.log(addTen(20)); // 30
+
+  </script>
+</body>
+</html>

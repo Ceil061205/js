@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // es6之前
+    // const obj = {
+    //   name: 'John',
+    // }
+    // 添加一个新属性,不确定属性是否存在，会覆盖原有属性
+    // obj.name = 20;
+
+    // es6之后,用symbol作为属性名，保证属性的唯一性
+    const s1 = Symbol('age');
+    const obj = {
+      [Symbol('name')]: 'John',
+      [s1]: 20,
+    }
+    // 即使是多次创建同名symbol，也不会覆盖原有属性
+    obj[Symbol('name')] = '20';
+    obj[s1] = 30;
+    console.log(obj);
+    
+
+  </script>
+</body>
+</html>

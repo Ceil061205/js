@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // weakmap 
+    let obj1 = {name: 'obj1'};
+    let obj2 = {name: 'obj2'};
+
+    const weakMap = new WeakMap();
+    // 不能加入普通类型当键
+    // weakMap.set(123, 'aaa');
+
+    // 加入对象作为键
+    weakMap.set(obj1, 'aaa');
+    console.log(weakMap);
+
+    // obj1 = null; // 此时obj1被垃圾回收机制回收，weakmap中对应的键值对也被自动删除
+    // console.log(weakMap);
+
+    // 不支持of遍历操作
+    // for (let [key, value] of weakMap) {
+    //   console.log(key, value);
+    // }
+
+    // 方法属性
+    console.log(weakMap.has(obj1)); // true
+    console.log(weakMap.get(obj1)); // aaa
+    // weakMap.delete(obj1); // 删除键值对，返回布尔值表示是否成功
+    // console.log(weakMap.has(obj1)); // false
+    // weakMap.clear(); // 清空所有数据
+    // console.log(weakMap);
+  </script>
+</body>
+</html>

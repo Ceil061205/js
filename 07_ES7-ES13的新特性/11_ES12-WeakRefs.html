@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let info = { name: 'why', age: 29, isStudent: true };
+    let obj = new WeakRef(info);
+    let obj2 = new WeakRef(info);
+
+    const finalRegister = new FinalizationRegistry((value) => {
+      console.log('FinalizationRegistry', value);
+    });
+    
+    finalRegister.register(info, 'info');
+    
+    setTimeout(() => {
+      info = null;
+    }, 1000);
+
+    setTimeout(() => {
+      console.log(obj.deref().name, obj.deref().age);
+    }, 8000);
+
+    // 如果是强引用 没有obj=null,info就无法被回收
+    // obj = null;
+  </script>
+</body>
+</html>

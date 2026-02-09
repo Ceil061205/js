@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const info = {
+      name: "John",
+      age: 30,
+      friend: {
+        name: "Jane",
+      },
+      run() {
+        console.log("running");
+      },
+      [Symbol()]: "abc"
+    }
+    info.obj = info;
+
+    // 1.操作一:引用赋值
+    // const obj1 = info;
+
+    // 2.操作二:浅拷贝 (浅拷贝只会复制一层对象的属性，如果对象中还包含其他对象，则不会递归复制这些内部对象)
+    // const obj2 = { ...info };
+    // obj2.name = "Tom";// 修改obj2的name属性，不影响info对象。
+    // obj2.friend.name = "Mike";// 修改obj2的friend.name属性，会影响info对象。
+
+    const obj4 = Object.assign({}, info);
+    obj4.name = "Tom";// 修改obj4的name属性，不影响info对象。
+
+    // 3.操作三:深拷贝 (深拷贝会递归复制对象中的所有属性，包括内部对象的属性) 永远是独立的对象
+    // JSON.parse(JSON.stringify(info)) Symbol属性,函数。
+    // 循环引用对象，不能用JSON.parse(JSON.stringify(info)) 
+    const obj3 = JSON.parse(JSON.stringify(info));
+    console.log(obj3);
+    
+  </script>
+</body>
+</html>

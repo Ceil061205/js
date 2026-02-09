@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.解构
+    // const obj = {name: '张三', age};
+    // const {name, age = 18} = obj;
+
+    // 2.函数默认值是对象
+    // function fn(obj = {name: '张三', age}) {
+    //   console.log(obj);
+    // }
+
+      // 默认值和解构结合使用
+    // function fn({name, age} = {name: '张三', age: 18}) {
+    //   console.log(name, age);
+    // }
+    function fn({ name = '是', age = 18 } = { }) {
+        console.log(name, age);
+    }
+    fn();
+  </script>
+</body>
+</html>

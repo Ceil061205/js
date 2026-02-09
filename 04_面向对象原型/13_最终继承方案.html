@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/inherit_util.js"></script>
+</head>
+<body>
+  <script>
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    Person.prototype.introduce = function() {
+      console.log(`Hello, my name is ${this.name}, and I am ${this.age} years old.`);
+    };
+
+    function Student(name, age, grade) {
+      Person.call(this, name, age);
+      this.grade = grade;
+    }
+
+    inherit(Student, Person);
+    Student.prototype.study = function() {
+      console.log(`${this.name} is studying in grade ${this.grade}.`);
+    };
+
+    const student1 = new Student('Alice', 20, 'A');
+    console.log(student1);
+    student1.introduce(); // Hello, my name is Alice, and I am 20 years old.
+    student1.study(); // Alice is studying in grade A.
+  </script>
+</body>
+</html>

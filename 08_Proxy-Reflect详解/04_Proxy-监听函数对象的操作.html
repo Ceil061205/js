@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo() {}
+    const fooProxy = new Proxy(foo, {
+      apply: function (target, thisArg, args) {
+        console.log('called:', target.name);
+        target.apply(thisArg, args);
+      },
+      construct: function (target, args) {
+        console.log('constructed:', target.name);
+        return new target(...args);
+      },
+    });
+    fooProxy.apply('abc',[11,22]);
+    new fooProxy(1,2);
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var msg = "Hello, world!";
+
+    function foo() {
+      var name = "John";
+
+      function bar() {
+        console.log(name);
+      }
+      return bar;
+    }
+
+    const bar = foo();
+    bar(); // 应该输出 "John"
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function * generator(name1) {
+      console.log(name1); // 1111111
+      console.log(1);
+      console.log(6789);
+      const name2 = yield 'abc';
+      console.log(name2); //222222
+      console.log(2);
+      yield 'def';
+      // return 'bbb';
+      console.log(3);
+      yield 'ccc';
+      return undefined;
+    }
+
+    // return 
+    // const gen = generator();
+    // console.log(gen.next('zhixing'));// 1,6789,{value: 'abc', done: false}
+    // console.log(gen.next());// 2,{value: 'bbb', done: true}
+    // console.log(gen.next());// 3,{value: undefined, done: true}
+
+    const gen = generator('1111111');//第一次传
+    console.log(gen.next());
+    console.log(gen.next('222222'));
+    console.log(gen.next());
+  </script>
+</body>
+</html>

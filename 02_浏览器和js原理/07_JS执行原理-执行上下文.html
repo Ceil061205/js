@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 在执行代码之前,在堆中先初始化创建一个全局对象globalobject(window),js引擎内部有一个执行上下文栈ECS,用于代码的调用栈 ,该对象所有作用域都可以访问,包含Date,Array,Function等全局对象,还有一个window属性指向自己
+    // ,每一个执行上下文都会关联一个变量对象VO(variable object),全局执行上下文关联的变量对象就是全局对象globalobject,在浏览器中是window
+
+    // 函数可以被提前访问,做了特殊处理
+    var msg = "Hello, world!";
+
+    var foo = 123;
+    console.log(foo);// 123
+    
+    function foo() {
+      console.log(msg);
+    }
+    foo();
+
+    console.log(msg);
+    
+  </script>
+</body>
+</html>

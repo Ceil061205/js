@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a = 10;
+    var b = 20;
+    function add() {//一般语言要传入参数才能访问到外层变量
+      // 这里可以直接访问是因为有闭包:(作用域链)一个函数体+一个关联的环境,可以在内层访问外层变量就是闭包
+  
+     return a + b;
+    }
+    console.log(add());// 30
+
+   
+  </script>
+</body>
+</html>

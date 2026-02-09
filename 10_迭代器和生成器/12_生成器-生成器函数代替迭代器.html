@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.对之前的代码进行重构
+    const names = ['John', 'Jane', 'Doe'];
+    const ages = [25, 30, 22];
+    function* createArrayIterator(arr) {
+      // 相当于多次执行代码块
+      for (let i = 0; i < arr.length; i++) {
+        yield arr[i];
+      }
+    }
+    const iterator = createArrayIterator(names);
+    console.log(iterator.next().value); // John
+    console.log(iterator.next().value); // Jane
+    console.log(iterator.next().value); // Doe
+    console.log(iterator.next().value); // undefined (因为数组已经遍历完了)
+
+    // 2.生成器函数,可以生产某个范围的值
+    // [3,9)
+    function* createRangeGenerator(start, end) {
+      for (let i = start; i < end; i++) {
+        yield i;
+      }
+    }
+    const rangeIterator = createRangeGenerator(3, 9);
+    console.log(rangeIterator.next().value); // 3
+    console.log(rangeIterator.next().value); // 4
+    console.log(rangeIterator.next().value); // 5
+    console.log(rangeIterator.next().value); // 6
+    console.log(rangeIterator.next().value); // 7
+    console.log(rangeIterator.next().value); // 8
+    console.log(rangeIterator.next().value); // undefined (因为已经遍历完了)
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person{
+      // 类的构造函数，用于初始化对象的状态
+      // new 一个类时候 会自动调用constructor方法
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      // 实例方法，用于定义对象的行为
+      introduce() {
+        console.log(`Hello! My name is ${this.name} and I am ${this.age} years old.`);
+      }
+    }
+    const person1 = new Person('Alice', 30);
+    console.log(person1);
+    console.log(Person.prototype === person1.__proto__);
+    
+    
+  </script>
+</body>
+</html>

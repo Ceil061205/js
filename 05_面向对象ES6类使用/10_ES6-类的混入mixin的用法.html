@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // js只支持单继承
+    // 解决方法用mixin
+    function mixinAnimal(Target) {
+      return class extends Target {
+        running() {
+          console.log(`${this.name} 跑`);
+        }
+      }
+    }
+    function mixinRunner(Target) {
+      return class extends Target {
+        fly() {
+          console.log(`${this.name} 飞`);
+        }
+      }
+    }
+
+    class Birdm {
+      eat() {
+        console.log(`${this.name} 吃东西`);
+      }
+    }
+    // var NewBird = mixinRunner(mixinAnimal(Birdm));
+    class NewBird extends mixinRunner(mixinAnimal(Birdm)) {
+     
+    }
+    var bird = new NewBird('小鸟');
+    bird.running();
+    bird.fly();
+    bird.eat();
+
+
+
+    // 单继承
+    class Animal {
+      constructor(name) {
+        this.name = name;
+      }
+      eat() {
+        console.log(`${this.name} 吃东西`);
+      }
+    }
+    class Flyer {
+      constructor(name) {
+        this.name = name;
+      }
+      fly() {
+        console.log(`${this.name} 飞`);
+      }
+    }
+    // class Bird extends Animal, Flyer {} 这样是不行的，因为js不支持多继承
+    
+  </script>
+</body>
+</html>
