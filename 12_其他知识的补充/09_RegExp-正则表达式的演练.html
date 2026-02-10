@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const res2 = /abc/ig
+    const msg = 'fabc111123 f44fff43 abc'
+    const newM = msg.replaceAll(/abc/ig, "cba")
+    console.log(newM);
+    //  \d表示数字 +表示一个或则多个 i是忽略大小写 g全局匹配
+    const newM2 = msg.replaceAll(/\d/ig, "")
+    console.log(newM2);
+  </script>
+</body>
+</html>

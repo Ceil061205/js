@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text">
+  <script>
+    // /^abc$/ig 开头结尾必须符合条件 不加g只匹配一次
+    const res = /abc/ig
+    const msg = "aa abc"
+    // test测试是否符合规则
+    console.log(res.test(msg));
+    const inputEl = document.querySelector(input)
+    inputEl.oninput = function() {
+      const value = this.value;
+      if(value.test(/^aaaaa$/ig)){
+
+      }
+    }
+    // match是字符串方法
+    const result2 = msg.match(res)
+    console.log(result2);
+    // matchAll 必须加g 返回的是迭代器 可以用forof来遍历
+    const result3 = msg.matchAll(res)
+    // replace和replaceAll
+    // split
+    // search 未搜索到返回-1
+  </script>
+</body>
+</html>
